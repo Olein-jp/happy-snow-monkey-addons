@@ -1,0 +1,55 @@
+//======================================================================
+// Mixin
+//======================================================================
+@mixin add-editor-styles-wrapper( $className ) {
+  .editor-styles-wrapper .is-style-#{$className},
+  .is-style-#{$className} {
+    @content;
+  }
+}
+
+//======================================================================
+// Snow Monkey Breakpoint Setting
+//======================================================================
+// Minimal width
+//-----------------------------------------------------
+$breakpoint-up: (
+        'md' : 'screen and (min-width: 640px)',
+        'lg' : 'screen and (min-width: 1024px)',
+        'xl' : 'screen and (min-width: 1280px)',
+) !default;
+
+// Max width
+//-----------------------------------------------------
+$breakpoint-down: (
+        'sm' : 'screen and (max-width: 639px)',
+        'md' : 'screen and (max-width: 1023px)',
+        'lg' : 'screen and (max-width: 1279px)',
+) !default;
+
+// Set Mixin
+//-----------------------------------------------------
+@mixin media-breakpoint-up($breakpoint: sm) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint: lg) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+
+/*--------------------------------------------------------------
+    Extending Blocks
+--------------------------------------------------------------*/
+@include add-editor-styles-wrapper( hsmb-pop ) {
+  padding: 15px;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
+  @include media-breakpoint-up(lg) {
+    padding: 25px;
+  }
+}
