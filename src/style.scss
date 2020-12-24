@@ -1,6 +1,8 @@
 //======================================================================
 // Mixin
 //======================================================================
+// Add .editor-styles-wrapper css class
+//-----------------------------------------------------
 @mixin add-editor-styles-wrapper( $className ) {
   .editor-styles-wrapper .is-style-#{$className},
   .is-style-#{$className} {
@@ -41,15 +43,42 @@ $breakpoint-down: (
   }
 }
 
+//======================================================================
+// Reset default style setting
+//======================================================================
+// heading
+//-----------------------------------------------------
+@mixin reset-default-style__heading() {
+  border-left: none;
+  background-color: inherit;
+}
+
 /*--------------------------------------------------------------
-    Extending Blocks
+   Extending Blocks Styles
 --------------------------------------------------------------*/
-@include add-editor-styles-wrapper( hsmb-pop ) {
-  padding: 15px;
-  background-color: pink;
-  color: white;
-  border-radius: 5px;
-  @include media-breakpoint-up(lg) {
-    padding: 25px;
+/*--------------------------------------------------------------
+    Like me box
+--------------------------------------------------------------*/
+/*  left image
+------------------------------*/
+@include add-editor-styles-wrapper( hsmb-left-image ) {
+  .wp-like-me-box {
+    &__figure {
+      order: 1;
+    }
+    &__body {
+      order: 0;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+    Recent posts
+--------------------------------------------------------------*/
+/* Undisplayed author name
+------------------------------*/
+@include add-editor-styles-wrapper( hsmb-undisplayed-author-name ) {
+  .c-meta__item--author {
+    display: none;
   }
 }
