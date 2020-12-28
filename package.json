@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Olein-jp/happy-snow-monkey-blocks.git"
+    "url": "git+https://github.com/Olein-jp/happy-snow-monkey-addons.git"
   },
   "author": "",
   "license": "GPL-2.0+",
   "bugs": {
-    "url": "https://github.com/Olein-jp/happy-snow-monkey-blocks/issues"
+    "url": "https://github.com/Olein-jp/happy-snow-monkey-addons/issues"
   },
-  "homepage": "https://github.com/Olein-jp/happy-snow-monkey-blocks#readme",
+  "homepage": "https://github.com/Olein-jp/happy-snow-monkey-addons#readme",
   "devDependencies": {
     "@wordpress/scripts": "12.6.0",
     "autoprefixer": "^9.8.6",

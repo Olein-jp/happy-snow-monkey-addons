@@ -1,1 +1,1 @@
-# happy-snow-monkey-blocks
+# HAPPY SNOW MONKEY Add-ons
