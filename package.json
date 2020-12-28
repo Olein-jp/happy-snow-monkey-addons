@@ -1,0 +1,36 @@
+{
+  "name": "happy-snow-monkey-addons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "block:clean": "rimraf build",
+    "block:build:js:left-image": "wp-scripts build src/left-image/index.js --output-path=build/left-image",
+    "block:build:js:undisplayed-author-name": "wp-scripts build src/undisplayed-author-name/index.js --output-path=build/undisplayed-author-name",
+    "block:build:js": "npm-run-all -s block:build:js:*",
+    "block:build:css": "node-sass src/ -o build && postcss build/*.css -r",
+    "block": "npm run block:clean && npm-run-all -s block:build:*",
+    "start": "wp-scripts start",
+    "build": "npm-run-all -p block:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olein-jp/happy-snow-monkey-blocks.git"
+  },
+  "author": "",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/Olein-jp/happy-snow-monkey-blocks/issues"
+  },
+  "homepage": "https://github.com/Olein-jp/happy-snow-monkey-blocks#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "12.6.0",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^4.1.10",
+    "node-sass": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.1",
+    "postcss-cli": "^8.3.1",
+    "rimraf": "^3.0.2"
+  }
+}
