@@ -13,7 +13,7 @@
  * Text Domain: happy-snow-monkey-addons
  *
  * @package happy-snow-monkey-addons
- * @author inc2734
+ * @author Olein-jp
  * @license GPL-2.0+
  */
 function hsma_styles() {
@@ -28,69 +28,79 @@ add_action( 'enqueue_block_assets', 'hsma_styles' );
 define( 'HAPPY_SNOW_MONKEY_ADDONS_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_ADDONS_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
-class Bootstrap {
+function plugins_loaded() {
 
+	$theme = wp_get_theme( get_template() );
 	/**
-	 * Constructor.
+	 * Check Snow Monkey activated
 	 */
-	public function __construct() {
-		add_action( 'plugins_loaded', [ $this, '_plugins_loaded' ] );
+	if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
+		add_action( 'admin_notices', 'hsma_admin_notice_no_snow_monkey' );
 	}
 
 	/**
-	 * Plugins loaded.
+	 * Check Snow Monkey version
 	 */
-	public function _plugins_loaded() {
-//		load_plugin_textdomain( 'happy-snow-monkey-addons', false, basename( __DIR__ ) . '/languages' );
+	if ( ! version_compare( $theme->get( 'Version' ), '12.1.0', '>=' ) ) {
+		add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_version' );
+	}
 
-//		add_action( 'init', [ $this, '_activate_autoupdate' ] );
-
-		$theme = wp_get_theme( get_template() );
-		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
-			add_action( 'admin_notices', [ $this, '_admin_notice_no_snow_monkey' ] );
-			return;
-		}
-
-		if ( ! version_compare( $theme->get( 'Version' ), '11.1.0', '>=' ) ) {
-			add_action( 'admin_notices', [ $this, '_admin_notice_invalid_snow_monkey_version' ] );
-			return;
-		}
-
-		add_action( 'admin_menu', [ $this, '_admin_menu' ] );
-		add_action( 'admin_init', [ $this, '_admin_init' ] );
-
-		$this->_disable();
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	/**
+	 * Check Snow Monkey Blocks activated
+	 */
+	if ( ! is_plugin_active( 'snow-monkey-blocks/snow-monkey-blocks.php' ) ) {
+		add_action( 'admin_notices', 'hsma_admin_notice_no_snow_monkey_blocks' );
 	}
 
 	/**
-	 * Admin notice for no Snow Monkey
-	 *
-	 * @return void
+	 * Check Snow Monkey Editor activated
 	 */
-	public function _admin_notice_no_snow_monkey() {
+	if ( ! is_plugin_active( 'snow-monkey-editor/snow-monkey-editor.php' ) ) {
+		add_action( 'admin_notices', 'hsma_admin_notice_no_snow_monkey_editor' );
+	}
+
+	/**
+	 * Check version of Snow Monkey Blocks & Editor
+	 */
+	$active_plugins = get_option( 'active_plugins', array() );
+	foreach ( $active_plugins as $plugin ) {
+		$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
+		// Snow Monkey Blocks is activated
+		if ( $plugin_data[ 'TextDomain' ] === 'snow-monkey-blocks' && ! version_compare( $plugin_data[ 'Version' ], '11.0.0', '>=' ) ) {
+			add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_blocks_version' );
+		}
+		// Snow Monkey Editor is activated
+		if ( $plugin_data[ 'TextDomain' ] === 'snow-monkey-editor' && ! version_compare( $plugin_data[ 'Version' ], '5.0.0', '>=' ) ) {
+			add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_editor_version' );
+		}
+	}
+
+	/**
+	 * Admin Notice : No Snow Monkey
+	 */
+	function hsma_admin_notice_no_snow_monkey() {
 		?>
 		<div class="notice notice-warning is-dismissible">
 			<p>
-				<?php esc_html_e( '[HAPPY SNOW MONKEY Addons] Needs the Snow Monkey.', 'happy-snow-monkey-addons' ); ?>
+				<?php esc_html_e( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey.', 'happy-snow-monkey-addons' ); ?>
 			</p>
 		</div>
 		<?php
 	}
 
 	/**
-	 * Admin notice for invalid Snow Monkey version
-	 *
-	 * @return void
+	 * Admin Notice : Invalid Snow Monkey version
 	 */
-	public function _admin_notice_invalid_snow_monkey_version() {
+	function hsma_admin_notice_invalid_snow_monkey_version() {
 		?>
 		<div class="notice notice-warning is-dismissible">
 			<p>
 				<?php
 				echo sprintf(
 				// translators: %1$s: version
-					esc_html__( '[HAPPY SNOW MONKEY BLOCKS] Needs the Snow Monkey %1$s or more.', 'happy-snow-monkey-addons' ),
-					'v11.1.0'
+					esc_html__( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey %1$s or more.', 'happy-snow-monkey-addons' ),
+					'v12.1.0'
 				);
 				?>
 			</p>
@@ -99,9 +109,70 @@ class Bootstrap {
 	}
 
 	/**
-	 * Add admin menu.
+	 * Admin Notice : No Snow Monkey Blocks
 	 */
-	public function _admin_menu() {
+	function hsma_admin_notice_no_snow_monkey_blocks() {
+		?>
+		<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php esc_html_e( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey Blocks.', 'happy-snow-monkey-addons' ); ?>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Admin Notice : Invalid Snow Monkey Blocks version
+	 */
+	function hsma_admin_notice_invalid_snow_monkey_blocks_version() { ?>
+		<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php
+				echo sprintf(
+				// translators: %1$s: version
+					esc_html__( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey Blocks %1$s or more.', 'happy-snow-monkey-addons' ),
+					'v11.0.0'
+				);
+				?>
+			</p>
+		</div>
+	<?php }
+
+	/**
+	 * Admin Notice : No Snow Monkey Editor
+	 */
+	function hsma_admin_notice_no_snow_monkey_editor() {
+		?>
+		<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php esc_html_e( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey Editor.', 'happy-snow-monkey-addons' ); ?>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Admin Notice : Invalid Snow Monkey Editor version
+	 */
+	function hsma_admin_notice_invalid_snow_monkey_editor_version() { ?>
+		<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php
+				echo sprintf(
+				// translators: %1$s: version
+					esc_html__( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey Editor %1$s or more.', 'happy-snow-monkey-addons' ),
+					'v5.0.0'
+				);
+				?>
+			</p>
+		</div>
+	<?php }
+
+	/**
+	 * add admin menu
+	 */
+	add_action( 'admin_menu', 'hsma_admin_menu' );
+	function hsma_admin_menu() {
 		add_options_page(
 			__( 'HAPPY SNOW MONKEY Add-ons', 'happy-snow-monkey-addons' ),
 			__( 'HAPPY SNOW MONKEY Add-ons', 'happy-snow-monkey-addons' ),
@@ -112,7 +183,7 @@ class Bootstrap {
 				<div class="wrap">
 					<h1><?php esc_html_e( 'HAPPY SNOW MONKEY Add-ons', 'happy-snow-monkey-addons' ); ?></h1>
 					<p>
-						<?php esc_html_e( 'Suspended setting items may need to be re-setting when re-enabled.', 'happy-snow-monkey-addons' ); ?>
+						<?php // esc_html_e( 'Suspended setting items may need to be re-setting when re-enabled.', 'happy-snow-monkey-addons' ); ?>
 					</p>
 					<form method="post" action="options.php">
 						<?php
@@ -128,91 +199,56 @@ class Bootstrap {
 	}
 
 	/**
-	 * Register setting.
+	 * Setting sections & Fields
 	 */
-	public function _admin_init() {
+	add_action( 'admin_init', 'hsma_admin_init' );
+	function hsma_admin_init() {
+
 		register_setting(
 			'happy-snow-monkey-addons',
 			'happy-snow-monkey-addons',
-			function( $option ) {
-				$default_option = [
-					'like-me-box--left-image'         => false,
-				];
-
-				$new_option = [];
-				foreach ( $default_option as $key => $value ) {
-					$new_option[ $key ] = ! empty( $option[ $key ] ) ? 1 : $value;
-				}
-
-				return $new_option;
-			}
+			''
 		);
 
+		/**
+		 * Setting sections
+		 */
 		add_settings_section(
-			'happy-snow-monkey-addons-disable',
-			__( 'Settings', 'happy-snow-monkey-addons' ),
-			function() {
-			},
+			'happy-snow-monkey-addons-extending-style',
+			__( 'Extending styles', 'happy-snow-monkey-addons' ),
+			'hsma_extending_style_section_desc',
 			'happy-snow-monkey-addons'
 		);
+		/**
+		 * section description
+		 */
+		function hsma_extending_style_section_desc() { ?>
+			<p><?php esc_html_e( 'Please check the items you do not want to use.', 'happy-snow-monkey-addons' ); ?></p>
+		<?php }
 
+		/**
+		 * Setting fields
+		 */
 		add_settings_field(
-			'like-me-box--left-image',
+			'like-me-box__left-image',
 			__( '[Like me box]Left image', 'happy-snow-monkey-addons' ),
-			function() {
-				?>
-				<input type="checkbox" name="happy-snow-monkey-addons[like-me-box--left-image]" value="1" <?php checked( 1, get_option( 'like-me-box--left-image' ) ); ?>>
-				<?php
-			},
+			function () { ?>
+				<input type="checkbox" name="like-me-box__left-image" id="like-me-box__left-image" value="1" <?php checked( 1, get_option( 'like-me-box__left-image' ), false ); ?>>
+			<?php },
 			'happy-snow-monkey-addons',
-			'happy-snow-monkey-addons-disable'
+			'happy-snow-monkey-addons-extending-style'
 		);
-		
-	}
 
-	/**
-	 * Main processes.
-	 */
-	public function _disable() {
-		if ( 0 === get_option( 'like-me-box--left-image' ) ) {
-			add_action( 'enqueue_block_editor_assets', function(){
-				wp_enqueue_script(
-					'hsma-like-me-box--left-image-js',
-					plugins_url( 'build/left-image/index.js', __FILE__ ),
-					array( 'wp-blocks' )
-				);
-			});
+		if ( 1 === get_option( 'like-me-box__left-image' ) ) {
+
 		}
 
 	}
 
 	/**
-	 * Return option.
-	 *
-	 * @param string $key The option key.
-	 * @return mixed
+	 * including files
 	 */
-//	protected function _get_option( $key ) {
-//		$option = get_option( 'happy-snow-monkey-addons' );
-//		return isset( $option[ $key ] ) ? (int) $option[ $key ] : false;
-//	}
+	include ( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/extending-blocks.php' );
 
-	/**
-	 * Activate auto update using GitHub
-	 *
-	 * @return void
-	 */
-//	public function _activate_autoupdate() {
-//		new Updater(
-//			plugin_basename( __FILE__ ),
-//			'inc2734',
-//			'happy-snow-monkey-addons',
-//			[
-//				'homepage' => 'https://snow-monkey.2inc.org',
-//			]
-//		);
-//	}
 }
-
-//require_once( SNOW_MONKEY_DIET_PATH . '/vendor/autoload.php' );
-new Bootstrap();
+add_action( 'plugins_loaded', 'plugins_loaded' );
