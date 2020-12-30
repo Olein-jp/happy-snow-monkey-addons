@@ -230,16 +230,16 @@ function plugins_loaded() {
 		 * Setting fields
 		 */
 		add_settings_field(
-			'like-me-box__left-image',
-			__( '[Like me box]Left image', 'happy-snow-monkey-addons' ),
+			'like-me-box__right-image',
+			__( '[Like me box]Right image', 'happy-snow-monkey-addons' ),
 			function () { ?>
-				<input type="checkbox" name="like-me-box__left-image" id="like-me-box__left-image" value="1" <?php checked( 1, get_option( 'like-me-box__left-image' ), false ); ?>>
+				<input type="checkbox" name="like-me-box__right-image" id="like-me-box__right-image" value="1" <?php checked( 1, get_option( 'like-me-box__right-image' ), false ); ?>>
 			<?php },
 			'happy-snow-monkey-addons',
 			'happy-snow-monkey-addons-extending-style'
 		);
 
-		if ( 1 === get_option( 'like-me-box__left-image' ) ) {
+		if ( 1 === get_option( 'like-me-box__right-image' ) ) {
 
 		}
 
