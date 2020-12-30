@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "block:clean": "rimraf build",
-    "block:build:js:left-image": "wp-scripts build src/left-image/index.js --output-path=build/left-image",
-    "block:build:js:undisplayed-author-name": "wp-scripts build src/undisplayed-author-name/index.js --output-path=build/undisplayed-author-name",
+    "block:build:js:left-image": "wp-scripts build src/like-me-box/right-image/index.js --output-path=build/like-me-box/right-image",
+    "block:build:js:undisplayed-author-name": "wp-scripts build src/recent-posts/undisplayed-author-name/index.js --output-path=build/recent-posts/undisplayed-author-name",
     "block:build:js": "npm-run-all -s block:build:js:*",
     "block:build:css": "node-sass src/ -o build && postcss build/*.css -r",
     "block": "npm run block:clean && npm-run-all -s block:build:*",
