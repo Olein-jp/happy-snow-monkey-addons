@@ -82,3 +82,10 @@ $breakpoint-down: (
     display: none;
   }
 }
+/* Undisplayed date
+------------------------------*/
+@include add-editor-styles-wrapper( hsma--rp--undisplayed-date ) {
+  .c-meta__item--published {
+    display: none;
+  }
+}

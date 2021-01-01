@@ -27,6 +27,7 @@ add_action( 'enqueue_block_assets', 'hsma_styles' );
 
 define( 'HAPPY_SNOW_MONKEY_ADDONS_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_ADDONS_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+define( 'HAPPY_SNOW_MONKEY_WEBSITE_URL', 'https://happy-snow-monkey.olein-design.com' );
 
 function plugins_loaded() {
 
@@ -207,7 +208,7 @@ function plugins_loaded() {
 		register_setting(
 			'happy-snow-monkey-addons',
 			'happy-snow-monkey-addons',
-			''
+			'intval'
 		);
 
 		/**
@@ -230,17 +231,23 @@ function plugins_loaded() {
 		 * Setting fields
 		 */
 		add_settings_field(
-			'like-me-box__right-image',
+			'lmb__right-image',
 			__( '[Like me box]Right image', 'happy-snow-monkey-addons' ),
 			function () { ?>
-				<input type="checkbox" name="like-me-box__right-image" id="like-me-box__right-image" value="1" <?php checked( 1, get_option( 'like-me-box__right-image' ), false ); ?>>
+				<input type="checkbox" name="happy-snow-monkey-addons[lmb__right-image]" value="1" <?php checked( 1, get_option( 'lmb__right-image' ) ); ?>>
 			<?php },
 			'happy-snow-monkey-addons',
 			'happy-snow-monkey-addons-extending-style'
 		);
 
-		if ( 1 === get_option( 'like-me-box__right-image' ) ) {
-
+		if ( 0 === get_option( 'like-me-box__right-image' ) ) {
+			add_action( 'admin_notices', function() { ?>
+				<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php echo '動いたよ！'; ?>
+			</p>
+		</div>
+			<?php });
 		}
 
 	}
@@ -249,6 +256,8 @@ function plugins_loaded() {
 	 * including files
 	 */
 	include ( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/extending-blocks.php' );
+
+	include ( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/show-action-hook-points.php' );
 
 }
 add_action( 'plugins_loaded', 'plugins_loaded' );
