@@ -5,28 +5,6 @@
  * @license GPL-2.0+
  */
 
-//
-// できればループで回して楽したい
-//
-//$hsma_action_hooks = array(
-//	'snow_monkey_prepend_drawer_nav',
-//	'snow_monkey_append_drawer_nav',
-//	'snow_monkey_prepend_body',
-//);
-//
-//foreach ( $hsma_action_hooks as $action_hook_name ) {
-//	add_action(
-//		$action_hook_name,
-//		function( $action_hook_name ) {
-//			?>
-<!--			<div class="c-hsma-hook-point c-blinking">-->
-<!--				<p><a href="--><?php //echo esc_url( HAPPY_SNOW_MONKEY_WEBSITE_URL . '/' . $action_hook_name ); ?><!--">--><?php //echo $action_hook_name; ?><!--</a></p>-->
-<!--			</div>-->
-<!--			--><?php
-//		}
-//	);
-//}
-
 /**
  * import style sheet
  */

@@ -68,11 +68,11 @@ function plugins_loaded() {
 	foreach ( $active_plugins as $plugin ) {
 		$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
 		// Snow Monkey Blocks is activated
-		if ( $plugin_data[ 'TextDomain' ] === 'snow-monkey-blocks' && ! version_compare( $plugin_data[ 'Version' ], '11.0.0', '>=' ) ) {
+		if ( $plugin_data[ 'TextDomain' ] === 'snow-monkey-blocks' && ! version_compare( $plugin_data[ 'Version' ], '10.0.0', '>=' ) ) {
 			add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_blocks_version' );
 		}
 		// Snow Monkey Editor is activated
-		if ( $plugin_data[ 'TextDomain' ] === 'snow-monkey-editor' && ! version_compare( $plugin_data[ 'Version' ], '5.0.0', '>=' ) ) {
+		if ( $plugin_data[ 'TextDomain' ] === 'snow-monkey-editor' && ! version_compare( $plugin_data[ 'Version' ], '4.0.0', '>=' ) ) {
 			add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_editor_version' );
 		}
 	}
@@ -183,9 +183,6 @@ function plugins_loaded() {
 				?>
 				<div class="wrap">
 					<h1><?php esc_html_e( 'HAPPY SNOW MONKEY Add-ons', 'happy-snow-monkey-addons' ); ?></h1>
-					<p>
-						<?php // esc_html_e( 'Suspended setting items may need to be re-setting when re-enabled.', 'happy-snow-monkey-addons' ); ?>
-					</p>
 					<form method="post" action="options.php">
 						<?php
 						settings_fields( 'happy-snow-monkey-addons' );
@@ -205,50 +202,67 @@ function plugins_loaded() {
 	add_action( 'admin_init', 'hsma_admin_init' );
 	function hsma_admin_init() {
 
-		register_setting(
-			'happy-snow-monkey-addons',
-			'happy-snow-monkey-addons',
-			'intval'
-		);
-
 		/**
 		 * Setting sections
 		 */
+		add_settings_section(
+			'happy-snow-monkey-addons-show-action-hook-points',
+			__( 'Show action hook points', 'happy-snow-monkey-addons' ),
+			'hsma_show_action_hook_points_section_desc',
+			'happy-snow-monkey-addons'
+		);
+
 		add_settings_section(
 			'happy-snow-monkey-addons-extending-style',
 			__( 'Extending styles', 'happy-snow-monkey-addons' ),
 			'hsma_extending_style_section_desc',
 			'happy-snow-monkey-addons'
 		);
+
 		/**
 		 * section description
 		 */
+		function hsma_show_action_hook_points_section_desc() { ?>
+			<p><?php esc_html_e( 'Please check if you want to show action hook points.', 'happy-snow-monkey-addons' ); ?></p>
+		<?php }
+
 		function hsma_extending_style_section_desc() { ?>
 			<p><?php esc_html_e( 'Please check the items you do not want to use.', 'happy-snow-monkey-addons' ); ?></p>
 		<?php }
 
 		/**
+		 * Register settings
+		 */
+		// Show action hook points
+		register_setting('happy-snow-monkey-addons', 'show-action-hook-points' );
+
+		// Extending styles
+		register_setting('happy-snow-monkey-addons', 'lmb__right-image' );
+
+		/**
 		 * Setting fields
 		 */
+		// Show action hook points
+		add_settings_field(
+			'show-action-hook-points',
+			__( 'Show', 'happy-snow-monkey-addons' ),
+			function () { ?>
+				<input type="checkbox" name="show-action-hook-points" value="1" <?php checked( 1, get_option( 'show-action-hook-points' ) ); ?>>
+			<?php },
+			'happy-snow-monkey-addons',
+			'happy-snow-monkey-addons-show-action-hook-points'
+		);
+
+		// Extending Styles
 		add_settings_field(
 			'lmb__right-image',
 			__( '[Like me box]Right image', 'happy-snow-monkey-addons' ),
 			function () { ?>
-				<input type="checkbox" name="happy-snow-monkey-addons[lmb__right-image]" value="1" <?php checked( 1, get_option( 'lmb__right-image' ) ); ?>>
+				<input type="checkbox" name="lmb__right-image" value="1" <?php checked( 1, get_option( 'lmb__right-image' ) ); ?>>
 			<?php },
 			'happy-snow-monkey-addons',
 			'happy-snow-monkey-addons-extending-style'
 		);
-
-		if ( 0 === get_option( 'like-me-box__right-image' ) ) {
-			add_action( 'admin_notices', function() { ?>
-				<div class="notice notice-warning is-dismissible">
-			<p>
-				<?php echo '動いたよ！'; ?>
-			</p>
-		</div>
-			<?php });
-		}
 
 	}
 
@@ -257,7 +271,9 @@ function plugins_loaded() {
 	 */
 	include ( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/extending-blocks.php' );
 
-	include ( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/show-action-hook-points.php' );
+	if ( '1' === get_option( 'show-action-hook-points' ) ) {
+		include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/show-action-hook-points.php' );
+	}
 
 }
 add_action( 'plugins_loaded', 'plugins_loaded' );

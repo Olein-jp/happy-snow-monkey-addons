@@ -27,7 +27,10 @@ function hsma_extending_style__lmb__right_image() {
 		array( 'wp-blocks' )
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'hsma_extending_style__lmb__right_image');
+
+if ( '' === get_option( 'lmb__right-image' ) ) {
+	add_action( 'enqueue_block_editor_assets', 'hsma_extending_style__lmb__right_image' );
+}
 
 /**
  * Extending styles : [recent posts]
