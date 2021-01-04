@@ -45,7 +45,10 @@ function hsma_extending_style__rp__undisplayed_author_name() {
 		array( 'wp-blocks' )
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'hsma_extending_style__rp__undisplayed_author_name');
+
+if ( '' === get_option( 'rp__undisplayed-author-name' ) ) {
+	add_action( 'enqueue_block_editor_assets', 'hsma_extending_style__rp__undisplayed_author_name' );
+}
 
 /**
  * Undisplayed date
@@ -57,4 +60,7 @@ function hsma_extending_style__rp__undisplayed_date() {
 		array( 'wp-blocks' )
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'hsma_extending_style__rp__undisplayed_date');
+
+if ( '' === get_option( 'rp__undisplayed-date' ) ) {
+	add_action( 'enqueue_block_editor_assets', 'hsma_extending_style__rp__undisplayed_date' );
+}

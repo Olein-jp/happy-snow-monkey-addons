@@ -238,11 +238,15 @@ function plugins_loaded() {
 
 		// Extending styles
 		register_setting('happy-snow-monkey-addons', 'lmb__right-image' );
+		register_setting('happy-snow-monkey-addons', 'rp__undisplayed-author-name' );
+		register_setting('happy-snow-monkey-addons', 'rp__undisplayed-date' );
 
 		/**
 		 * Setting fields
+		 *
+		 * Show action hook points
+		 *
 		 */
-		// Show action hook points
 		add_settings_field(
 			'show-action-hook-points',
 			__( 'Show', 'happy-snow-monkey-addons' ),
@@ -253,12 +257,43 @@ function plugins_loaded() {
 			'happy-snow-monkey-addons-show-action-hook-points'
 		);
 
-		// Extending Styles
+		/**
+		 * Extending Styles
+		 *
+		 * [Like me box]Right image
+		 *
+		 */
 		add_settings_field(
 			'lmb__right-image',
 			__( '[Like me box]Right image', 'happy-snow-monkey-addons' ),
 			function () { ?>
 				<input type="checkbox" name="lmb__right-image" value="1" <?php checked( 1, get_option( 'lmb__right-image' ) ); ?>>
+			<?php },
+			'happy-snow-monkey-addons',
+			'happy-snow-monkey-addons-extending-style'
+		);
+
+		/**
+		 * [Recentry posts]Undisplayed author name
+		 */
+		add_settings_field(
+			'rp__undisplayed-author-name',
+			__( '[Recentry posts]Undisplayed author name', 'happy-snow-monkey-addons' ),
+			function () { ?>
+				<input type="checkbox" name="rp__undisplayed-author-name" value="1" <?php checked( 1, get_option( 'rp__undisplayed-author-name' ) ); ?>>
+			<?php },
+			'happy-snow-monkey-addons',
+			'happy-snow-monkey-addons-extending-style'
+		);
+
+		/**
+		 * [Recentry posts]Undisplayed date
+		 */
+		add_settings_field(
+			'rp__undisplayed-date',
+			__( '[Recentry posts]Undisplayed date', 'happy-snow-monkey-addons' ),
+			function () { ?>
+				<input type="checkbox" name="rp__undisplayed-date" value="1" <?php checked( 1, get_option( 'rp__undisplayed-date' ) ); ?>>
 			<?php },
 			'happy-snow-monkey-addons',
 			'happy-snow-monkey-addons-extending-style'
