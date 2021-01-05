@@ -16,18 +16,20 @@
  * @author Olein-jp
  * @license GPL-2.0+
  */
-function hsma_styles() {
-	wp_enqueue_style(
-		'hsma-styles',
-		plugins_url( 'build/style.css', __FILE__ )
-	);
-}
-add_action( 'enqueue_block_assets', 'hsma_styles' );
-
 
 define( 'HAPPY_SNOW_MONKEY_ADDONS_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_ADDONS_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_WEBSITE_URL', 'https://happy-snow-monkey.olein-design.com' );
+
+function hsma_styles() {
+	wp_enqueue_style(
+		'hsma-styles',
+		HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/style.css',
+		[],
+		filemtime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/style.css' )
+	);
+}
+add_action( 'enqueue_block_assets', 'hsma_styles' );
 
 function plugins_loaded() {
 
