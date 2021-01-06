@@ -312,5 +312,19 @@ function plugins_loaded() {
 		include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/show-action-hook-points.php' );
 	}
 
+	/**
+	 * Updater
+	 *
+	 * @link https://github.com/inc2734/wp-github-plugin-updater
+	 *
+	 */
+	$updater = new Inc2734\WP_GitHub_Plugin_Updater\Bootstrap(
+		plugin_basename( __FILE__ ),
+		'Olein-jp',
+		'happy-snow-monkey-addons'
+	);
+
 }
 add_action( 'plugins_loaded', 'plugins_loaded' );
+
+require_once( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/vendor/autoload.php' );
