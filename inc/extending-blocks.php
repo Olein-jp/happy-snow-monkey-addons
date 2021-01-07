@@ -28,7 +28,9 @@ function hsma_extending_style__lmb__right_image() {
 	wp_enqueue_script(
 		'hsma--lmb--right-image',
 		plugins_url( '../build/like-me-box/right-image/index.js', __FILE__ ),
-		array( 'wp-blocks' )
+		[ 'wp-blocks' ],
+		fileatime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/index.js' ),
+		true /* 実験 */
 	);
 }
 
