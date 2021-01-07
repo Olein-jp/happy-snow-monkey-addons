@@ -21,6 +21,9 @@ define( 'HAPPY_SNOW_MONKEY_ADDONS_URL', untrailingslashit( plugin_dir_url( __FIL
 define( 'HAPPY_SNOW_MONKEY_ADDONS_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_WEBSITE_URL', 'https://happy-snow-monkey.olein-design.com' );
 
+/**
+ * Enqueue stylesheet file
+ */
 function hsma_styles() {
 	wp_enqueue_style(
 		'hsma-styles',
@@ -31,6 +34,9 @@ function hsma_styles() {
 }
 add_action( 'enqueue_block_assets', 'hsma_styles' );
 
+/**
+ * Function : plugin loaded
+ */
 function plugins_loaded() {
 
 	$theme = wp_get_theme( get_template() );
@@ -70,11 +76,11 @@ function plugins_loaded() {
 	foreach ( $active_plugins as $plugin ) {
 		$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
 		// Snow Monkey Blocks is activated
-		if ( $plugin_data['TextDomain'] === 'snow-monkey-blocks' && ! version_compare( $plugin_data['Version'], '10.0.0', '>=' ) ) {
+		if ( 'snow-monkey-blocks' === $plugin_data['TextDomain'] && ! version_compare( $plugin_data['Version'], '10.0.0', '>=' ) ) {
 			add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_blocks_version' );
 		}
 		// Snow Monkey Editor is activated
-		if ( $plugin_data['TextDomain'] === 'snow-monkey-editor' && ! version_compare( $plugin_data['Version'], '4.0.0', '>=' ) ) {
+		if ( 'snow-monkey-editor' === $plugin_data['TextDomain'] && ! version_compare( $plugin_data['Version'], '4.0.0', '>=' ) ) {
 			add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_editor_version' );
 		}
 	}
@@ -179,6 +185,9 @@ function plugins_loaded() {
 	 * add admin menu
 	 */
 	add_action( 'admin_menu', 'hsma_admin_menu' );
+	/**
+	 * Add option page
+	 */
 	function hsma_admin_menu() {
 		add_options_page(
 			__( 'HAPPY SNOW MONKEY Add-ons', 'happy-snow-monkey-addons' ),
@@ -206,6 +215,9 @@ function plugins_loaded() {
 	 * Setting sections & Fields
 	 */
 	add_action( 'admin_init', 'hsma_admin_init' );
+	/**
+	 * Setting sections
+	 */
 	function hsma_admin_init() {
 
 		/**
@@ -226,7 +238,7 @@ function plugins_loaded() {
 		);
 
 		/**
-		 * section description
+		 * section description / Show action hook points
 		 */
 		function hsma_show_action_hook_points_section_desc() {
 			?>
@@ -234,6 +246,9 @@ function plugins_loaded() {
 			<?php
 		}
 
+		/**
+		 * section description / Extending styles
+		 */
 		function hsma_extending_style_section_desc() {
 			?>
 			<p><?php esc_html_e( 'Please check the items you do not want to use.', 'happy-snow-monkey-addons' ); ?></p>
@@ -331,7 +346,7 @@ function plugins_loaded() {
 	 *
 	 * @link https://github.com/inc2734/wp-github-plugin-updater
 	 */
-	$updater = new Inc2734\WP_GitHub_Plugin_Updater\Bootstrap(
+	new Inc2734\WP_GitHub_Plugin_Updater\Bootstrap(
 		plugin_basename( __FILE__ ),
 		'Olein-jp',
 		'happy-snow-monkey-addons'
