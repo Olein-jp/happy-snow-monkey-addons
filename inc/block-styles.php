@@ -84,8 +84,8 @@ function hsma_block_style__lmb__right_image() {
 		'hsma--lmb--right-image',
 		plugins_url( '../build/like-me-box/right-image/index.js', __FILE__ ),
 		[ 'wp-blocks' ],
-		fileatime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/index.js' ),
-		true /* 実験 */
+		fileatime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/like-me-box/right-image/index.js' ),
+		false
 	);
 }
 
