@@ -41,7 +41,6 @@ function plugins_loaded() {
 	 */
 	include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/settings-panel.php' );
 
-
 	/**
 	 * Updater
 	 *

@@ -101,55 +101,73 @@ function hsma_admin_init() {
 		'happy-snow-monkey-addons-show-action-hook-points'
 	);
 
-	/**
+	/*******
 	 * Register settings : Block styles
-	 * 
-	 * Options
 	 */
-	$options = [
-		'[Like me box]Right image'                => 'lmb__right-image',
-		'[Recentry posts]Undisplayed author name' => 'rp__undisplayed-author-name',
-		'[Recentry posts]Undisplayed date'        => 'rp__undisplayed-date',
-	];
+	/**
+	 * lmb__right-image : register setting & add setting field
+	 */
+	register_setting( 'happy-snow-monkey-addons', 'lmb__right-image' );
+	add_settings_field(
+		'lmb__right-image',
+		__( '[Like me box]Right image', 'happy-snow-monkey-addons' ),
+		function () {
+			?>
+			<input type="checkbox" name="lmb__right-image" value="1" <?php checked( 1, get_option( 'lmb__right-image' ) ); ?>>
+			<?php
+		},
+		'happy-snow-monkey-addons',
+		'happy-snow-monkey-addons-block-style'
+	);
 
-	foreach ( $options as $name => $option ) {
-		/**
-		 * Register setting
-		 */
-		register_setting( 'happy-snow-monkey-addons', $option );
+	/**
+	 * rp__undisplayed-author-name : register setting & add setting field
+	 */
+	register_setting( 'happy-snow-monkey-addons', 'rp__undisplayed-author-name' );
+	add_settings_field(
+		'rp__undisplayed-author-name',
+		__( '[Recent posts]Undisplayed author name', 'happy-snow-monkey-addons' ),
+		function () {
+			?>
+			<input type="checkbox" name="rp__undisplayed-author-name" value="1" <?php checked( 1, get_option( 'rp__undisplayed-author-name' ) ); ?>>
+			<?php
+		},
+		'happy-snow-monkey-addons',
+		'happy-snow-monkey-addons-block-style'
+	);
 
-		/**
-		 * Add setting field
-		 */
-		add_settings_field(
-			$option,
-			__( $name, 'happy-snow-monkey-addons' ),
-			function () use ( $name, $option ) {
-				?>
-				<input type="checkbox" name="<?php echo esc_html( $option ); ?>" value="1" <?php checked( 1, get_option( $option ) ); ?>>
-				<?php
-			},
-			'happy-snow-monkey-addons',
-			'happy-snow-monkey-addons-block-style'
-		);
-	}
+	/**
+	 * rp__undisplayed-date : register setting & add setting field
+	 */
+	register_setting( 'happy-snow-monkey-addons', 'rp__undisplayed-date' );
+	add_settings_field(
+		'rp__undisplayed-date',
+		__( '[Recent posts]Undisplayed date', 'happy-snow-monkey-addons' ),
+		function () {
+			?>
+			<input type="checkbox" name="rp__undisplayed-date" value="1" <?php checked( 1, get_option( 'rp__undisplayed-date' ) ); ?>>
+			<?php
+		},
+		'happy-snow-monkey-addons',
+		'happy-snow-monkey-addons-block-style'
+	);
 
 }
 
 /**
  * When activated
  */
-//register_activation_hook( __FILE__, function() use ( $options ) {
-//	foreach ( $options as $name => $option ) {
-//		update_option( $option, 1 );
-//	}
-//});
+// register_activation_hook( __FILE__, function() use ( $options ) {
+// foreach ( $options as $name => $option ) {
+// update_option( $option, 1 );
+// }
+// });
 
 /**
  * When Deactivated
  */
-//register_deactivation_hook( __FILE__, function() use ( $options ) {
-//	foreach ( $options as $name => $option ) {
-//		delete_option( $option );
-//	}
-//});
+// register_deactivation_hook( __FILE__, function() use ( $options ) {
+// foreach ( $options as $name => $option ) {
+// delete_option( $option );
+// }
+// });

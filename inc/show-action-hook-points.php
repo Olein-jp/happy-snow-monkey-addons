@@ -16,11 +16,10 @@ if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->t
 /**
  * Check Snow Monkey version
  */
-elseif ( ! version_compare( $theme->get( 'Version' ), '12.1.0', '>=' ) ) {
+if ( ! version_compare( $theme->get( 'Version' ), '12.1.0', '>=' ) ) {
 	add_action( 'admin_notices', 'hsma_admin_notice_invalid_snow_monkey_version' );
 	return;
 }
-
 /**
  * Admin Notice : No Snow Monkey
  */
@@ -63,7 +62,7 @@ if ( '1' === get_option( 'show-action-hook-points' ) ) {
 	 */
 	add_action(
 		'wp_enqueue_scripts',
-		function() {
+		function () {
 			wp_enqueue_style(
 				'hsma-output-action-hook-styles',
 				HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/action-hook.css',
@@ -101,7 +100,7 @@ if ( '1' === get_option( 'show-action-hook-points' ) ) {
 	foreach ( $action_hooks as $action_hook ) {
 		add_action(
 			$action_hook,
-			function() use ( $action_hook ) {
+			function () use ( $action_hook ) {
 				?>
 				<div class="c-btn c-btn--block c-hsma-hook-point">
 					<p><a href="<?php echo esc_url( HAPPY_SNOW_MONKEY_WEBSITE_URL . '/' . $action_hook ); ?>" target="_blank"><?php echo esc_html( $action_hook ); ?></a></p>
@@ -110,5 +109,4 @@ if ( '1' === get_option( 'show-action-hook-points' ) ) {
 			}
 		);
 	}
-
 }
