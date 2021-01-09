@@ -135,3 +135,21 @@ function hsma_admin_init() {
 	}
 
 }
+
+/**
+ * When activated
+ */
+//register_activation_hook( __FILE__, function() use ( $options ) {
+//	foreach ( $options as $name => $option ) {
+//		update_option( $option, 1 );
+//	}
+//});
+
+/**
+ * When Deactivated
+ */
+//register_deactivation_hook( __FILE__, function() use ( $options ) {
+//	foreach ( $options as $name => $option ) {
+//		delete_option( $option );
+//	}
+//});
