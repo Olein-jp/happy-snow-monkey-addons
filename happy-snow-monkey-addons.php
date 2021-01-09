@@ -55,4 +55,30 @@ function plugins_loaded() {
 }
 add_action( 'plugins_loaded', 'plugins_loaded' );
 
+/**
+ * jobs when activated.
+ */
+register_activation_hook(
+	__FILE__,
+	function() {
+		add_option( 'show-action-hook-points', '' );
+		add_option( 'lmb__right-image', '1' );
+		add_option( 'rp__undisplayed-author-name', '1' );
+		add_option( 'rp__undisplayed-date', '1' );
+	}
+);
+
+/**
+ * jobs when deactivated.
+ */
+register_deactivation_hook(
+	__FILE__,
+	function() {
+		delete_option( 'show-action-hook-points' );
+		delete_option( 'lmb__right-image' );
+		delete_option( 'rp__undisplayed-author-name' );
+		delete_option( 'rp__undisplayed-date' );
+	}
+);
+
 require_once( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/vendor/autoload.php' );

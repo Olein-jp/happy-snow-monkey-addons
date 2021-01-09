@@ -82,7 +82,7 @@ add_action(
  *
  * Right image
  */
-if ( '' === get_option( 'lmb__right-image' ) ) {
+if ( '1' === get_option( 'lmb__right-image' ) ) {
 	register_block_style(
 		'snow-monkey-blocks/like-me-box',
 		array(
@@ -97,7 +97,7 @@ if ( '' === get_option( 'lmb__right-image' ) ) {
  *
  * Undisplayed author name
  */
-if ( '' === get_option( 'rp__undisplayed-author-name' ) ) {
+if ( '1' === get_option( 'rp__undisplayed-author-name' ) ) {
 	register_block_style(
 		'snow-monkey-blocks/recent-posts',
 		array(
@@ -110,7 +110,7 @@ if ( '' === get_option( 'rp__undisplayed-author-name' ) ) {
 /**
  * Undisplayed date
  */
-if ( '' === get_option( 'rp__undisplayed-date' ) ) {
+if ( '1' === get_option( 'rp__undisplayed-date' ) ) {
 	register_block_style(
 		'snow-monkey-blocks/recent-posts',
 		array(

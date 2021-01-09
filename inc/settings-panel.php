@@ -56,8 +56,8 @@ function hsma_admin_init() {
 
 	add_settings_section(
 		'happy-snow-monkey-addons-block-style',
-		__( 'Extending styles', 'happy-snow-monkey-addons' ),
-		'hsma_extending_style_section_desc',
+		__( 'Block styles', 'happy-snow-monkey-addons' ),
+		'hsma_block_style_section_desc',
 		'happy-snow-monkey-addons'
 	);
 
@@ -73,9 +73,9 @@ function hsma_admin_init() {
 	/**
 	 * section description / Extending styles
 	 */
-	function hsma_extending_style_section_desc() {
+	function hsma_block_style_section_desc() {
 		?>
-		<p><?php esc_html_e( 'Please check the items you do not want to use.', 'happy-snow-monkey-addons' ); ?></p>
+		<p><?php esc_html_e( 'Please check the styles you want to use.', 'happy-snow-monkey-addons' ); ?></p>
 		<?php
 	}
 
@@ -153,21 +153,3 @@ function hsma_admin_init() {
 	);
 
 }
-
-/**
- * When activated
- */
-// register_activation_hook( __FILE__, function() use ( $options ) {
-// foreach ( $options as $name => $option ) {
-// update_option( $option, 1 );
-// }
-// });
-
-/**
- * When Deactivated
- */
-// register_deactivation_hook( __FILE__, function() use ( $options ) {
-// foreach ( $options as $name => $option ) {
-// delete_option( $option );
-// }
-// });
