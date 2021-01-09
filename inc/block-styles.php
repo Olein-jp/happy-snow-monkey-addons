@@ -65,17 +65,17 @@ function hsma_admin_notice_invalid_snow_monkey_blocks_version() {
 /**
  * Enqueue styles
  */
-// add_action(
-// 'enqueue_block_assets',
-// function() {
-// wp_enqueue_style(
-// 'hsma-block-styles',
-// HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/style.css',
-// [],
-// filemtime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/style.css' )
-// );
-// }
-// );
+add_action(
+	'enqueue_block_assets',
+	function () {
+		wp_enqueue_style(
+			'hsma-block-styles',
+			HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/style.css',
+			[],
+			filemtime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/style.css' )
+		);
+	}
+);
 
 /**
  * block styles : [Like me box]
