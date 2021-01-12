@@ -1,6 +1,6 @@
 {
   "name": "happy-snow-monkey-addons",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,11 @@
     "pretest": "wp-env start && wp-env run composer 'install --no-interaction'",
     "test:lint:php": "wp-env run composer run-script lint",
     "test:lint": "run-s test:lint:*",
-    "test": "run-s test:*"
+    "test": "run-s test:*",
+    "clean:zip": "rimraf happy-snow-monkey-addons.zip",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='package*.json' . happy-snow-monkey-addons && cd happy-snow-monkey-addons && composer install --no-dev",
+    "zip:archive": "zip -9 -qmr happy-snow-monkey-addons.zip happy-snow-monkey-addons",
+    "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   },
   "repository": {
     "type": "git",
