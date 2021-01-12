@@ -81,4 +81,7 @@ register_deactivation_hook(
 	}
 );
 
+/**
+ * for composer
+ */
 require_once( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/vendor/autoload.php' );
