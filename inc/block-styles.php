@@ -72,7 +72,7 @@ add_action(
 			'hsma-block-styles',
 			HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/block-style.css',
 			[],
-			filemtime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/block-style.css' )
+			filemtime( HAPPY_SNOW_MONKEY_ADDONS_PATH )
 		);
 	}
 );
