@@ -86,7 +86,7 @@ foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( $target_block, $block_s
 			$target_block,
 			array(
 				'name'  => $block_style_slug,
-				'label' => __( '[HSMA]' . $block_style_name, 'happy-snow-monkey-addons' ),
+				'label' => esc_html( $block_style_name, 'happy-snow-monkey-addons' ),
 			)
 		);
 	}

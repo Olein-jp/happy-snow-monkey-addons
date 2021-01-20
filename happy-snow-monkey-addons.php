@@ -5,7 +5,7 @@
  * Version: 0.1.3
  * Tested up to: 5.6
  * Requires at least: 5.6
- * Requires PHP: 5.6
+ * Requires PHP: 7.3
  * Author: Olein-jp
  * Author URI: https://olein-design.com
  * License: GPL2 or later
@@ -21,22 +21,23 @@ define( 'HAPPY_SNOW_MONKEY_ADDONS_URL', untrailingslashit( plugin_dir_url( __FIL
 define( 'HAPPY_SNOW_MONKEY_ADDONS_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_WEBSITE_URL', 'https://happy-snow-monkey.olein-design.com' );
 
-define( 'HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES',
+define(
+	'HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES',
 	[
 		[
 			'snow-monkey-blocks/like-me-box',
 			'[Like me box] Right image',
-			'hsma--lmb--right-image'
+			'hsma--lmb--right-image',
 		],
 		[
 			'snow-monkey-blocks/recent-posts',
 			'[Recent posts] Undisplayed author name',
-			'hsma--rp--undisplayed-author-name'
+			'hsma--rp--undisplayed-author-name',
 		],
 		[
 			'snow-monkey-blocks/recent-posts',
 			'[Recent posts] Undisplayed author date',
-			'hsma--rp--undisplayed-author-date'
+			'hsma--rp--undisplayed-author-date',
 		],
 	]
 );
@@ -98,7 +99,7 @@ register_deactivation_hook(
 /**
  * Register activation & deactivation jobs for block styles
  */
-foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( $target_block, $block_style_name, $block_style_slug ) ) {
+foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( , , $block_style_slug ) ) {
 	register_activation_hook(
 		__FILE__,
 		function() use ( $block_style_slug ) {

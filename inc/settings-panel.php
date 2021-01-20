@@ -104,14 +104,14 @@ function hsma_admin_init() {
 	/*******
 	 * Register settings : Block styles
 	 */
-	foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( $target_block, $block_style_name, $block_style_slug ) ) {
+	foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( , $block_style_name, $block_style_slug ) ) {
 		register_setting( 'happy-snow-monkey-addons', $block_style_slug );
 		add_settings_field(
 			$block_style_slug,
-			__( $block_style_name, 'happy-snow-monkey-addons' ),
+			esc_html( $block_style_name, 'happy-snow-monkey-addons' ),
 			function () use ( $block_style_slug ) {
 				?>
-				<input type="checkbox" name="<?php echo esc_html( $block_style_slug ) ?>" value="1" <?php checked( 1, get_option( $block_style_slug ) ); ?>>
+				<input type="checkbox" name="<?php echo esc_html( $block_style_slug ); ?>" value="1" <?php checked( 1, get_option( $block_style_slug ) ); ?>>
 				<?php
 			},
 			'happy-snow-monkey-addons',
