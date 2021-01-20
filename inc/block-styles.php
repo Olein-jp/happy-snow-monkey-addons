@@ -78,44 +78,16 @@ add_action(
 );
 
 /**
- * block styles : [Like me box]
- *
- * Right image
+ * block styles
  */
-if ( '1' === get_option( 'lmb__right-image' ) ) {
-	register_block_style(
-		'snow-monkey-blocks/like-me-box',
-		array(
-			'name'  => 'hsma--lmb--right-image',
-			'label' => __( '[HSMA]Right image', 'happy-snow-monkey-addons' ),
-		)
-	);
-}
-
-/**
- * Block styles : [recent posts]
- *
- * Undisplayed author name
- */
-if ( '1' === get_option( 'rp__undisplayed-author-name' ) ) {
-	register_block_style(
-		'snow-monkey-blocks/recent-posts',
-		array(
-			'name'  => 'hsma--rp--undisplayed-author-name',
-			'label' => __( '[HSMA]Undisplayed author name', 'happy-snow-monkey-addons' ),
-		)
-	);
-}
-
-/**
- * Undisplayed date
- */
-if ( '1' === get_option( 'rp__undisplayed-date' ) ) {
-	register_block_style(
-		'snow-monkey-blocks/recent-posts',
-		array(
-			'name'  => 'hsma--rp--undisplayed-date',
-			'label' => __( '[HSMA]Undisplayed date', 'happy-snow-monkey-addons' ),
-		)
-	);
+foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( $target_block, $block_style_name, $block_style_slug ) ) {
+	if ( '1' === get_option( $block_style_slug ) ) {
+		register_block_style(
+			$target_block,
+			array(
+				'name'  => $block_style_slug,
+				'label' => __( '[HSMA]' . $block_style_name, 'happy-snow-monkey-addons' ),
+			)
+		);
+	}
 }

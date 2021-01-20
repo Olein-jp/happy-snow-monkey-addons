@@ -51,6 +51,9 @@ jobs:
         run: composer install
 
       - name: Build project
+        run: npm run build
+
+      - name: Archive
         run: npm run zip
 
       - name: Create Release

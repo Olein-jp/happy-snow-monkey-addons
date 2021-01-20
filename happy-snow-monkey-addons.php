@@ -2,7 +2,7 @@
 /**
  * Plugin Name: HAPPY SNOW MONKEY Add-ons
  * Description: You can added add-ons for Snow Monkey, Snow Monkey Blocks, Snow Monkey Editors.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Tested up to: 5.6
  * Requires at least: 5.6
  * Requires PHP: 5.6
@@ -20,6 +20,26 @@
 define( 'HAPPY_SNOW_MONKEY_ADDONS_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_ADDONS_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_WEBSITE_URL', 'https://happy-snow-monkey.olein-design.com' );
+
+define( 'HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES',
+	[
+		[
+			'snow-monkey-blocks/like-me-box',
+			'[Like me box] Right image',
+			'hsma--lmb--right-image'
+		],
+		[
+			'snow-monkey-blocks/recent-posts',
+			'[Recent posts] Undisplayed author name',
+			'hsma--rp--undisplayed-author-name'
+		],
+		[
+			'snow-monkey-blocks/recent-posts',
+			'[Recent posts] Undisplayed author date',
+			'hsma--rp--undisplayed-author-date'
+		],
+	]
+);
 
 /**
  * Function : plugin loaded
@@ -56,30 +76,42 @@ function plugins_loaded() {
 add_action( 'plugins_loaded', 'plugins_loaded' );
 
 /**
- * jobs when activated.
+ * jobs when activated for action hooks
  */
 register_activation_hook(
 	__FILE__,
 	function() {
 		add_option( 'show-action-hook-points', '' );
-		add_option( 'lmb__right-image', '1' );
-		add_option( 'rp__undisplayed-author-name', '1' );
-		add_option( 'rp__undisplayed-date', '1' );
 	}
 );
 
 /**
- * jobs when deactivated.
+ * jobs when deactivated for action hooks.
  */
 register_deactivation_hook(
 	__FILE__,
 	function() {
 		delete_option( 'show-action-hook-points' );
-		delete_option( 'lmb__right-image' );
-		delete_option( 'rp__undisplayed-author-name' );
-		delete_option( 'rp__undisplayed-date' );
 	}
 );
+
+/**
+ * Register activation & deactivation jobs for block styles
+ */
+foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( $target_block, $block_style_name, $block_style_slug ) ) {
+	register_activation_hook(
+		__FILE__,
+		function() use ( $block_style_slug ) {
+			add_option( $block_style_slug, '1' );
+		}
+	);
+	register_deactivation_hook(
+		__FILE__,
+		function() use ( $block_style_slug ) {
+			delete_option( $block_style_slug );
+		}
+	);
+}
 
 /**
  * for composer

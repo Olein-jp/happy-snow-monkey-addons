@@ -104,52 +104,19 @@ function hsma_admin_init() {
 	/*******
 	 * Register settings : Block styles
 	 */
-	/**
-	 * lmb__right-image : register setting & add setting field
-	 */
-	register_setting( 'happy-snow-monkey-addons', 'lmb__right-image' );
-	add_settings_field(
-		'lmb__right-image',
-		__( '[Like me box]Right image', 'happy-snow-monkey-addons' ),
-		function () {
-			?>
-			<input type="checkbox" name="lmb__right-image" value="1" <?php checked( 1, get_option( 'lmb__right-image' ) ); ?>>
-			<?php
-		},
-		'happy-snow-monkey-addons',
-		'happy-snow-monkey-addons-block-style'
-	);
-
-	/**
-	 * rp__undisplayed-author-name : register setting & add setting field
-	 */
-	register_setting( 'happy-snow-monkey-addons', 'rp__undisplayed-author-name' );
-	add_settings_field(
-		'rp__undisplayed-author-name',
-		__( '[Recent posts]Undisplayed author name', 'happy-snow-monkey-addons' ),
-		function () {
-			?>
-			<input type="checkbox" name="rp__undisplayed-author-name" value="1" <?php checked( 1, get_option( 'rp__undisplayed-author-name' ) ); ?>>
-			<?php
-		},
-		'happy-snow-monkey-addons',
-		'happy-snow-monkey-addons-block-style'
-	);
-
-	/**
-	 * rp__undisplayed-date : register setting & add setting field
-	 */
-	register_setting( 'happy-snow-monkey-addons', 'rp__undisplayed-date' );
-	add_settings_field(
-		'rp__undisplayed-date',
-		__( '[Recent posts]Undisplayed date', 'happy-snow-monkey-addons' ),
-		function () {
-			?>
-			<input type="checkbox" name="rp__undisplayed-date" value="1" <?php checked( 1, get_option( 'rp__undisplayed-date' ) ); ?>>
-			<?php
-		},
-		'happy-snow-monkey-addons',
-		'happy-snow-monkey-addons-block-style'
-	);
+	foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( $target_block, $block_style_name, $block_style_slug ) ) {
+		register_setting( 'happy-snow-monkey-addons', $block_style_slug );
+		add_settings_field(
+			$block_style_slug,
+			__( $block_style_name, 'happy-snow-monkey-addons' ),
+			function () use ( $block_style_slug ) {
+				?>
+				<input type="checkbox" name="<?php echo esc_html( $block_style_slug ) ?>" value="1" <?php checked( 1, get_option( $block_style_slug ) ); ?>>
+				<?php
+			},
+			'happy-snow-monkey-addons',
+			'happy-snow-monkey-addons-block-style'
+		);
+	}
 
 }
