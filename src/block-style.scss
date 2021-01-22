@@ -11,6 +11,11 @@
 }
 
 //======================================================================
+// Variables
+//======================================================================
+$accent-color: var( --accent-color,#cd162c );
+
+//======================================================================
 // Snow Monkey Breakpoint Setting
 //======================================================================
 // Minimal width
@@ -87,5 +92,37 @@ $breakpoint-down: (
 @include add-editor-styles-wrapper( hsma--rp--undisplayed-date ) {
   .c-meta__item--published {
     display: none;
+  }
+}
+/* Undisplayed excerpt
+------------------------------*/
+@include add-editor-styles-wrapper( hsma--rp--undisplayed-excerpt ) {
+  .c-entry-summary__content {
+    display: none;
+  }
+}
+/* Undisplayed all meta
+------------------------------*/
+@include add-editor-styles-wrapper( hsma--rp--undisplayed-all-meta ) {
+  .c-entry-summary__content {
+    display: none;
+  }
+  .c-entry-summary__meta {
+    display: none;
+  }
+}
+
+/*--------------------------------------------------------------
+    Information
+--------------------------------------------------------------*/
+/* Simple border
+------------------------------*/
+@include add-editor-styles-wrapper( hsma--info--simple-border ) {
+  .smb-information__item {
+    border-bottom: 1px solid $accent-color;
+  }
+  .c-row {
+    align-items: center;
+    padding-bottom: .5em;
   }
 }

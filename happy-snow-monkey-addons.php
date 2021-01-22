@@ -39,6 +39,21 @@ define(
 			'[Recent posts] Undisplayed author date',
 			'hsma--rp--undisplayed-author-date',
 		],
+		[
+			'snow-monkey-blocks/recent-posts',
+			'[Recent posts] Undisplayed excerpt',
+			'hsma--rp--undisplayed-excerpt',
+		],
+		[
+			'snow-monkey-blocks/recent-posts',
+			'[Recent posts] Undisplayed all meta',
+			'hsma--rp--undisplayed-all-meta',
+		],
+		[
+			'snow-monkey-blocks/information',
+			'[Information] Simple border',
+			'hsma--info--simple-border',
+		],
 	]
 );
 
