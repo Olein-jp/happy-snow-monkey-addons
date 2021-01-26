@@ -72,7 +72,7 @@ add_action(
 			'hsma-block-styles',
 			HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/block-style.css',
 			[],
-			filemtime( HAPPY_SNOW_MONKEY_ADDONS_PATH )
+			filemtime( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/build/block-style.css' )
 		);
 	}
 );
@@ -80,13 +80,15 @@ add_action(
 /**
  * block styles
  */
-foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( $target_block, $block_style_name, $block_style_slug ) ) {
-	if ( '1' === get_option( $block_style_slug ) ) {
+$styles = include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/config/styles.php' );
+
+foreach ( $styles as $style ) {
+	if ( '1' === get_option( $style['style_name'] ) ) {
 		register_block_style(
-			$target_block,
+			$style['block_name'],
 			array(
-				'name'  => $block_style_slug,
-				'label' => esc_html( $block_style_name, 'happy-snow-monkey-addons' ),
+				'name'  => $style['style_name'],
+				'label' => esc_html( $style['style_label'] ),
 			)
 		);
 	}

@@ -2,10 +2,10 @@
 /**
  * Plugin Name: HAPPY SNOW MONKEY Add-ons
  * Description: You can added add-ons for Snow Monkey, Snow Monkey Blocks, Snow Monkey Editors.
- * Version: 0.1.4
+ * Version: 0.1.5
  * Tested up to: 5.6
  * Requires at least: 5.6
- * Requires PHP: 7.0
+ * Requires PHP: 5.6
  * Author: Olein-jp
  * Author URI: https://olein-design.com
  * License: GPL2 or later
@@ -20,42 +20,6 @@
 define( 'HAPPY_SNOW_MONKEY_ADDONS_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_ADDONS_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'HAPPY_SNOW_MONKEY_WEBSITE_URL', 'https://happy-snow-monkey.olein-design.com' );
-
-define(
-	'HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES',
-	[
-		[
-			'snow-monkey-blocks/like-me-box',
-			'[Like me box] Right image',
-			'hsma--lmb--right-image',
-		],
-		[
-			'snow-monkey-blocks/recent-posts',
-			'[Recent posts] Undisplayed author name',
-			'hsma--rp--undisplayed-author-name',
-		],
-		[
-			'snow-monkey-blocks/recent-posts',
-			'[Recent posts] Undisplayed author date',
-			'hsma--rp--undisplayed-author-date',
-		],
-		[
-			'snow-monkey-blocks/recent-posts',
-			'[Recent posts] Undisplayed excerpt',
-			'hsma--rp--undisplayed-excerpt',
-		],
-		[
-			'snow-monkey-blocks/recent-posts',
-			'[Recent posts] Undisplayed all meta',
-			'hsma--rp--undisplayed-all-meta',
-		],
-		[
-			'snow-monkey-blocks/information',
-			'[Information] Simple border',
-			'hsma--info--simple-border',
-		],
-	]
-);
 
 /**
  * Function : plugin loaded
@@ -114,17 +78,19 @@ register_deactivation_hook(
 /**
  * Register activation & deactivation jobs for block styles
  */
-foreach ( HAPPY_SNOW_MONKEY_ADDONS_BLOCK_STYLES as list( , , $block_style_slug ) ) {
+$styles = include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/config/styles.php' );
+
+foreach ( $styles as $style ) {
 	register_activation_hook(
 		__FILE__,
-		function() use ( $block_style_slug ) {
-			add_option( $block_style_slug, '1' );
+		function() use ( $style ) {
+			add_option( $style['style_name'], '1' );
 		}
 	);
 	register_deactivation_hook(
 		__FILE__,
-		function() use ( $block_style_slug ) {
-			delete_option( $block_style_slug );
+		function() use ( $style ) {
+			delete_option( $style['style_name'] );
 		}
 	);
 }
