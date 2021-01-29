@@ -119,10 +119,29 @@ $breakpoint-down: (
 ------------------------------*/
 @include add-editor-styles-wrapper( hsma--info--simple-border ) {
   .smb-information__item {
-    border-bottom: 1px solid $accent-color;
+
   }
+  .smb-information__item__label {
+    padding: 7px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .smb-information__item__body {
+    @include media-breakpoint-up(md) {
+      padding: 7px;
+    }
+  }
+
   .c-row {
-    align-items: center;
-    padding-bottom: .5em;
+    > .c-row__col {
+      &:first-child {
+        border-bottom: 3px solid $accent-color;
+      }
+      &:last-child {
+        @include media-breakpoint-up(md) {
+          border-bottom: 1px solid $accent-color;
+        }
+      }
+    }
   }
 }

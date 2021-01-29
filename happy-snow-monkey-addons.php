@@ -2,7 +2,7 @@
 /**
  * Plugin Name: HAPPY SNOW MONKEY Add-ons
  * Description: You can added add-ons for Snow Monkey, Snow Monkey Blocks, Snow Monkey Editors.
- * Version: 0.1.5
+ * Version: 0.1.6
  * Tested up to: 5.6
  * Requires at least: 5.6
  * Requires PHP: 5.6
