@@ -55,6 +55,13 @@ function hsma_admin_init() {
 	);
 
 	add_settings_section(
+		'happy-snow-monkey-addons-show-dashboard-widget',
+		__( 'Show dashboard widget', 'happy-snow-monkey-addons' ),
+		'hsma_show_dashboard_widget_section_desc',
+		'happy-snow-monkey-addons'
+	);
+
+	add_settings_section(
 		'happy-snow-monkey-addons-block-style',
 		__( 'Block styles', 'happy-snow-monkey-addons' ),
 		'hsma_block_style_section_desc',
@@ -67,6 +74,15 @@ function hsma_admin_init() {
 	function hsma_show_action_hook_points_section_desc() {
 		?>
 		<p><?php esc_html_e( 'Please check if you want to show action hook points.', 'happy-snow-monkey-addons' ); ?></p>
+		<?php
+	}
+
+	/**
+	 * section description / Show dashboard widget
+	 */
+	function hsma_show_dashboard_widget_section_desc() {
+		?>
+		<p><?php esc_html_e( 'Please check if you want to show HAPPY SNOW MONKEY Addons dashboard widget.', 'happy-snow-monkey-addons' ); ?></p>
 		<?php
 	}
 
@@ -99,6 +115,22 @@ function hsma_admin_init() {
 		},
 		'happy-snow-monkey-addons',
 		'happy-snow-monkey-addons-show-action-hook-points'
+	);
+
+	/**
+	 *
+	 * Show dashboard widget
+	 */
+	add_settings_field(
+		'show-dashboard-widget',
+		__( 'Show', 'happy-snow-monkey-addons' ),
+		function () {
+			?>
+			<input type="checkbox" name="show-dashboard-widget" value="1" <?php checked( 1, get_option( 'show-dashboard-widget' ) ); ?>>
+			<?php
+		},
+		'happy-snow-monkey-addons',
+		'happy-snow-monkey-addons-show-dashboard-widget'
 	);
 
 	/*******

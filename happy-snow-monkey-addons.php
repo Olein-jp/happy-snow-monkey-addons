@@ -2,7 +2,7 @@
 /**
  * Plugin Name: HAPPY SNOW MONKEY Add-ons
  * Description: You can added add-ons for Snow Monkey, Snow Monkey Blocks, Snow Monkey Editors.
- * Version: 0.1.6
+ * Version: 0.1.7
  * Tested up to: 5.6
  * Requires at least: 5.6
  * Requires PHP: 5.6
@@ -37,6 +37,11 @@ function plugins_loaded() {
 	include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/block-styles.php' );
 
 	/**
+	 * Include : Dashboard Widget
+	 */
+	include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/show-dashboard-widget.php' );
+
+	/**
 	 * Include : Settings panel
 	 */
 	include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/inc/settings-panel.php' );
@@ -62,6 +67,7 @@ register_activation_hook(
 	__FILE__,
 	function() {
 		add_option( 'show-action-hook-points', '' );
+		add_option( 'show-dashboard-widget', '1' );
 	}
 );
 
@@ -72,6 +78,7 @@ register_deactivation_hook(
 	__FILE__,
 	function() {
 		delete_option( 'show-action-hook-points' );
+		delete_option( 'show-dashboard-widget' );
 	}
 );
 
