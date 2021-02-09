@@ -36,4 +36,19 @@ return [
 		'style_label' => __( '[Information] Simple border', 'happy-snow-monkey-addons' ),
 		'style_name'  => 'hsma--info--simple-border',
 	],
+	[
+		'block_name'  => 'snow-monkey-blocks/categories-list',
+		'style_label' => __( '[Categories list] Accent color', 'happy-snow-monkey-addons' ),
+		'style_name'  => 'hsma--catlist--accent-color',
+	],
+	[
+		'block_name'  => 'snow-monkey-blocks/categories-list',
+		'style_label' => __( '[Categories list] Sub accent color', 'happy-snow-monkey-addons' ),
+		'style_name'  => 'hsma--catlist--sub-accent-color',
+	],
+	[
+		'block_name'  => 'snow-monkey-blocks/faq',
+		'style_label' => __( '[FAQ] Answer indent', 'happy-snow-monkey-addons' ),
+		'style_name'  => 'hsma--faq--answer-indent',
+	],
 ];

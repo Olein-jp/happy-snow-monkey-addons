@@ -14,6 +14,7 @@
 // Variables
 //======================================================================
 $accent-color: var( --accent-color,#cd162c );
+$sub-accent-color: var( --sub-accent-color, #ccc62b );
 
 //======================================================================
 // Snow Monkey Breakpoint Setting
@@ -21,9 +22,8 @@ $accent-color: var( --accent-color,#cd162c );
 // Minimal width
 //-----------------------------------------------------
 $breakpoint-up: (
-        'md' : 'screen and (min-width: 640px)',
-        'lg' : 'screen and (min-width: 1024px)',
-        'xl' : 'screen and (min-width: 1280px)',
+        'md' : 'screen and (min-width: 40em)',
+        'lg' : 'screen and (min-width: 64em)',
 ) !default;
 
 // Max width
@@ -143,5 +143,80 @@ $breakpoint-down: (
         }
       }
     }
+  }
+}
+
+/*--------------------------------------------------------------
+    Categories List
+--------------------------------------------------------------*/
+/* Accent color
+------------------------------*/
+@include add-editor-styles-wrapper( hsma--catlist--accent-color ) {
+  .smb-categories-list__item {
+    border-color: $accent-color;
+  }
+  .smb-categories-list__item__count {
+    background-color: $accent-color;
+    color: white;
+    &:after {
+      border-left-color: $accent-color;
+    }
+  }
+  .smb-categories-list__item__category-name {
+    color: $accent-color;
+    a {
+      color: $accent-color;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .smb-categories-list__list.masonry-active {
+      .smb-categories-list__item:nth-child(2n-1) {
+        .smb-categories-list__item__count:after {
+          border-right-color: $accent-color;
+        }
+      }
+    }
+  }
+}
+
+/* Sub accent color
+------------------------------*/
+@include add-editor-styles-wrapper( hsma--catlist--sub-accent-color ) {
+  .smb-categories-list__item {
+    border-color: $sub-accent-color;
+  }
+  .smb-categories-list__item__count {
+    background-color: $sub-accent-color;
+    color: white;
+    &:after {
+      border-left-color: $sub-accent-color;
+    }
+  }
+  .smb-categories-list__item__category-name,
+  .smb-categories-list__item__category-name a {
+    color: $sub-accent-color;
+  }
+
+  @include media-breakpoint-up(md) {
+    .smb-categories-list__list.masonry-active {
+      .smb-categories-list__item:nth-child(2n-1) {
+        .smb-categories-list__item__count:after {
+          border-right-color: $sub-accent-color;
+        }
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+    FAQ
+--------------------------------------------------------------*/
+/* Answer indent
+------------------------------*/
+@include add-editor-styles-wrapper( hsma--faq--answer-indent ) {
+  .smb-faq__item__answer {
+    padding-left: calc(var(--_space, 1.76923rem)*1*var(--_margin-scale, 1));
+    border-left: 2px solid #ccc;
   }
 }
