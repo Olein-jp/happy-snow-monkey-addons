@@ -18,7 +18,7 @@ if ( '1' === get_option( 'show-dashboard-widget' ) ) {
 		function() {
 			wp_add_dashboard_widget(
 				'hsma_dasgboard_widget',
-				'Snow Monkeyで困ったら…',
+				__( 'If you have trouble with Snow Monkey...', 'happy-snow-monkey-addons' ),
 				'hsma_dashboard_widget'
 			);
 
@@ -47,7 +47,7 @@ if ( '1' === get_option( 'show-dashboard-widget' ) ) {
 		<ol>
 			<li><a href="https://snow-monkey.2inc.org/forums/" target="_blank">Snow Monkey サポートフォーラム</a>でトラブル内容を検索する</li>
 			<li>Snow Monkey <a href="https://snow-monkey.2inc.org/product/snow-monkey/" target="_blank">サブスクリプション契約</a>を行い、<a href="https://snow-monkey.2inc.org/forums/" target="_blank">Snow Monkey サポートフォーラム</a>で質問をする</li>
-			<li><a href="https://snow-monkey.2inc.org/snow-monkey-expert/" target="_blank">Snow Monkey公認エキスパート</a>に対応を依頼する</li>
+			<li><a href="https://snow-monkey.2inc.org/snow-monkey-expert/" target="_blank">Snow Monkey エキスパートのOlein Design</a>に対応を依頼する</li>
 		</ol>
 		<?php
 	}

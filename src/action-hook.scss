@@ -1,9 +1,30 @@
+@import "setting";
+/*--------------------------------------------------------------
+    hsma-hook-point
+--------------------------------------------------------------*/
 .c-hsma-hook-point {
-  background-color: lightgrey;
-  border-radius: 0;
-  a {
-    font-weight: bold;
-    text-decoration: none;
-    color: var( --accent-color,#cd162c );
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 12px;
+
+  background-color: darken( $button-color, 3% );
+  background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, $button-color ), color-stop(.25, transparent),color-stop(.5, transparent), color-stop(.5, $button-color ),color-stop(.75, $button-color ), color-stop(.75, transparent),to(transparent));
+  -webkit-background-size: 14px 14px;
+  animation: blink 1s ease-in-out infinite alternate;
+  @include media-breakpoint-up(md) {
+    font-size: 16px;
   }
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+/*--------------------------------------------------------------
+    animation
+--------------------------------------------------------------*/
+@keyframes blink{
+  0% { opacity: .75; }
+  100% { opacity: 1; }
 }

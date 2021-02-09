@@ -1,53 +1,4 @@
-//======================================================================
-// Mixin
-//======================================================================
-// Add .editor-styles-wrapper css class
-//-----------------------------------------------------
-@mixin add-editor-styles-wrapper( $className ) {
-  .editor-styles-wrapper .is-style-#{$className},
-  .is-style-#{$className} {
-    @content;
-  }
-}
-
-//======================================================================
-// Variables
-//======================================================================
-$accent-color: var( --accent-color,#cd162c );
-$sub-accent-color: var( --sub-accent-color, #ccc62b );
-
-//======================================================================
-// Snow Monkey Breakpoint Setting
-//======================================================================
-// Minimal width
-//-----------------------------------------------------
-$breakpoint-up: (
-        'md' : 'screen and (min-width: 40em)',
-        'lg' : 'screen and (min-width: 64em)',
-) !default;
-
-// Max width
-//-----------------------------------------------------
-$breakpoint-down: (
-        'sm' : 'screen and (max-width: 639px)',
-        'md' : 'screen and (max-width: 1023px)',
-        'lg' : 'screen and (max-width: 1279px)',
-) !default;
-
-// Set Mixin
-//-----------------------------------------------------
-@mixin media-breakpoint-up($breakpoint: sm) {
-  @media #{map-get($breakpoint-up, $breakpoint)} {
-    @content;
-  }
-}
-
-@mixin media-breakpoint-down($breakpoint: lg) {
-  @media #{map-get($breakpoint-down, $breakpoint)} {
-    @content;
-  }
-}
-
+@import "setting";
 //======================================================================
 // Reset default style setting
 //======================================================================
@@ -89,7 +40,7 @@ $breakpoint-down: (
 }
 /* Undisplayed date
 ------------------------------*/
-@include add-editor-styles-wrapper( hsma--rp--undisplayed-date ) {
+@include add-editor-styles-wrapper( hsma--rp--undisplayed-post-date ) {
   .c-meta__item--published {
     display: none;
   }

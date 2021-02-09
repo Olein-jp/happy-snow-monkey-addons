@@ -73,7 +73,7 @@ function hsma_admin_init() {
 	 */
 	function hsma_show_action_hook_points_section_desc() {
 		?>
-		<p><?php esc_html_e( 'Please check if you want to show action hook points.', 'happy-snow-monkey-addons' ); ?></p>
+		<p><?php esc_html_e( 'Please check if you want to show action hook points', 'happy-snow-monkey-addons' ); ?></p>
 		<?php
 	}
 
@@ -82,7 +82,7 @@ function hsma_admin_init() {
 	 */
 	function hsma_show_dashboard_widget_section_desc() {
 		?>
-		<p><?php esc_html_e( 'Please check if you want to show HAPPY SNOW MONKEY Addons dashboard widget.', 'happy-snow-monkey-addons' ); ?></p>
+		<p><?php esc_html_e( 'Please check if you want to show HAPPY SNOW MONKEY Addons dashboard widget', 'happy-snow-monkey-addons' ); ?></p>
 		<?php
 	}
 
@@ -91,7 +91,7 @@ function hsma_admin_init() {
 	 */
 	function hsma_block_style_section_desc() {
 		?>
-		<p><?php esc_html_e( 'Please check the styles you want to use.', 'happy-snow-monkey-addons' ); ?></p>
+		<p><?php esc_html_e( 'Please check the styles you want to use', 'happy-snow-monkey-addons' ); ?></p>
 		<?php
 	}
 

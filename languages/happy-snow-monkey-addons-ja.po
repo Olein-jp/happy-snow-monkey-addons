@@ -1,0 +1,132 @@
+# Copyright (C) 2021 Olein-jp
+# This file is distributed under the GPL2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: HAPPY SNOW MONKEY Add-ons 0.1.8\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/happy-snow-monkey-"
+"addons\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-02-09T04:41:33+00:00\n"
+"PO-Revision-Date: 2021-02-09 13:42+0900\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Domain: happy-snow-monkey-addons\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja_JP\n"
+
+#. Plugin Name of the plugin
+#: inc/settings-panel.php:17 inc/settings-panel.php:18
+#: inc/settings-panel.php:24
+msgid "HAPPY SNOW MONKEY Add-ons"
+msgstr "HAPPY SNOW MONKEY アドオン"
+
+#. Description of the plugin
+msgid ""
+"You can added add-ons for Snow Monkey, Snow Monkey Blocks, Snow Monkey "
+"Editors"
+msgstr ""
+"Snow Monkey、Snow Monkey Blocks、Snow Monkey Editor にアドオンを追加すること"
+"ができます"
+
+#. Author of the plugin
+msgid "Olein-jp"
+msgstr "Olein-jp"
+
+#. Author URI of the plugin
+msgid "https://olein-design.com"
+msgstr "https://olein-design.com"
+
+#: config/styles.php:11
+msgid "[Like me box] Right image"
+msgstr "[いいね！ボックス] 右アイキャッチ"
+
+#: config/styles.php:16
+msgid "[Recent posts] Undisplayed author name"
+msgstr "[最近の投稿] 著者名を非表示"
+
+#: config/styles.php:21
+msgid "[Recent posts] Undisplayed post date"
+msgstr "[最近の投稿] 投稿日を非表示"
+
+#: config/styles.php:26
+msgid "[Recent posts] Undisplayed excerpt"
+msgstr "[最近の投稿] 概要を非表示"
+
+#: config/styles.php:31
+msgid "[Recent posts] Undisplayed all meta"
+msgstr "[最近の投稿] 全メタ情報を非表示"
+
+#: config/styles.php:36
+msgid "[Information] Simple border"
+msgstr "[情報ブロック] シンプル罫線"
+
+#: config/styles.php:41
+msgid "[Categories list] Accent color"
+msgstr "[カテゴリー一覧] アクセントカラー"
+
+#: config/styles.php:46
+msgid "[Categories list] Sub accent color"
+msgstr "[カテゴリー一覧] サブアクセントカラー"
+
+#: config/styles.php:51
+msgid "[FAQ] Answer indent"
+msgstr "[FAQ] 答えのみインデント"
+
+#: inc/block-styles.php:27
+msgid "[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey Blocks"
+msgstr "[HAPPY SNOW MONKEY アドオン] Snow Monkey Blocks が必要です"
+
+#. translators: %1$s: version
+#: inc/block-styles.php:56
+msgid "[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey Blocks %1$s or more"
+msgstr ""
+"[HAPPY SNOW MONKEY アドオン] Snow Monkey Blocks バージョン %1$s 以上が必要で"
+"す"
+
+#: inc/settings-panel.php:52
+msgid "Show action hook points"
+msgstr "アクションフック箇所を表示"
+
+#: inc/settings-panel.php:59
+msgid "Show dashboard widget"
+msgstr "ダッシュボードウィジェットを表示"
+
+#: inc/settings-panel.php:66
+msgid "Block styles"
+msgstr "ブロックスタイル"
+
+#: inc/settings-panel.php:76
+msgid "Please check if you want to show action hook points"
+msgstr "アクションフック箇所を表示したい場合にはチェックを入れてください"
+
+#: inc/settings-panel.php:85
+msgid ""
+"Please check if you want to show HAPPY SNOW MONKEY Addons dashboard widget"
+msgstr ""
+"HAPPY SNOW MONKEY アドオン ダッシュボードウィジェットを表示したい場合には"
+"チェックを入れてください"
+
+#: inc/settings-panel.php:94
+msgid "Please check the styles you want to use"
+msgstr "利用したいブロックスタイルにチェックを入れてください"
+
+#: inc/settings-panel.php:110 inc/settings-panel.php:126
+msgid "Show"
+msgstr "表示"
+
+#: inc/show-action-hook-points.php:30
+msgid "[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey"
+msgstr "[HAPPY SNOW MONKEY アドオン] Snow Monkey が必要です"
+
+#. translators: %1$s: version
+#: inc/show-action-hook-points.php:46
+msgid "[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey %1$s or more"
+msgstr ""
+"[HAPPY SNOW MONKEY アドオン] Snow Monkey バージョン %1$s 以上が必要です"
+
+#: inc/show-dashboard-widget.php:21
+msgid "If you have trouble with Snow Monkey..."
+msgstr "もし Snow Monkey を使っていて困ったら…"

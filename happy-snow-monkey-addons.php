@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: HAPPY SNOW MONKEY Add-ons
- * Description: You can added add-ons for Snow Monkey, Snow Monkey Blocks, Snow Monkey Editors.
- * Version: 0.1.7
+ * Description: You can added add-ons for Snow Monkey, Snow Monkey Blocks, Snow Monkey Editors
+ * Version: 0.1.8
  * Tested up to: 5.6
  * Requires at least: 5.6
  * Requires PHP: 5.6
@@ -25,7 +25,7 @@ define( 'HAPPY_SNOW_MONKEY_WEBSITE_URL', 'https://happy-snow-monkey.olein-design
  * Function : plugin loaded
  */
 function plugins_loaded() {
-
+	load_plugin_textdomain( 'happy-snow-monkey-addons', false, basename( __DIR__ ) . '/languages' );
 	/**
 	 * Include : Show action hook points
 	 */

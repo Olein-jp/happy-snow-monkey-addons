@@ -27,7 +27,7 @@ function hsma_admin_notice_no_snow_monkey() {
 	?>
 	<div class="notice notice-warning is-dismissible">
 		<p>
-			<?php esc_html_e( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey.', 'happy-snow-monkey-addons' ); ?>
+			<?php esc_html_e( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey', 'happy-snow-monkey-addons' ); ?>
 		</p>
 	</div>
 	<?php
@@ -43,7 +43,7 @@ function hsma_admin_notice_invalid_snow_monkey_version() {
 			<?php
 			echo sprintf(
 			// translators: %1$s: version
-				esc_html__( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey %1$s or more.', 'happy-snow-monkey-addons' ),
+				esc_html__( '[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey %1$s or more', 'happy-snow-monkey-addons' ),
 				'v12.1.0'
 			);
 			?>

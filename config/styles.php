@@ -18,8 +18,8 @@ return [
 	],
 	[
 		'block_name'  => 'snow-monkey-blocks/recent-posts',
-		'style_label' => __( '[Recent posts] Undisplayed author date', 'happy-snow-monkey-addons' ),
-		'style_name'  => 'hsma--rp--undisplayed-author-date',
+		'style_label' => __( '[Recent posts] Undisplayed post date', 'happy-snow-monkey-addons' ),
+		'style_name'  => 'hsma--rp--undisplayed-post-date',
 	],
 	[
 		'block_name'  => 'snow-monkey-blocks/recent-posts',
