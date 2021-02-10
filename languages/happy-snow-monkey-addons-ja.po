@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-02-09T04:41:33+00:00\n"
-"PO-Revision-Date: 2021-02-09 13:42+0900\n"
+"PO-Revision-Date: 2021-02-10 10:40+0900\n"
 "X-Generator: Poedit 2.4.2\n"
 "X-Domain: happy-snow-monkey-addons\n"
 "Last-Translator: \n"
@@ -53,7 +53,7 @@ msgstr "[最近の投稿] 投稿日を非表示"
 
 #: config/styles.php:26
 msgid "[Recent posts] Undisplayed excerpt"
-msgstr "[最近の投稿] 概要を非表示"
+msgstr "[最近の投稿] 抜粋を非表示"
 
 #: config/styles.php:31
 msgid "[Recent posts] Undisplayed all meta"
@@ -61,7 +61,7 @@ msgstr "[最近の投稿] 全メタ情報を非表示"
 
 #: config/styles.php:36
 msgid "[Information] Simple border"
-msgstr "[情報ブロック] シンプル罫線"
+msgstr "[情報] シンプル罫線"
 
 #: config/styles.php:41
 msgid "[Categories list] Accent color"
