@@ -95,6 +95,8 @@ if ( '1' === get_option( 'show-action-hook-points' ) ) {
 		'snow_monkey_before_archive_entry_content',
 		'snow_monkey_append_archive_entry_content',
 		'snow_monkey_entry_meta_items',
+		'snow_monkey_after_header_site_branding_column',
+		'snow_monkey_before_header_site_branding_column',
 	];
 
 	foreach ( $action_hooks as $action_hook ) {
