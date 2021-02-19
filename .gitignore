@@ -6,3 +6,4 @@ vendor/
 .wp-env.override.json
 sql/
 /languages/happy-snow-monkey-addons.pot
+src/.sass-cache/
