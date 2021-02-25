@@ -65,7 +65,7 @@ if ( '1' === get_option( 'show-dashboard-widget' ) ) {
 			printf( esc_html__( 'Or, I recommend to buy %1$s for making topics on %2$s', 'happy-snow-monkey-addons' ), '<a href="https://snow-monkey.2inc.org/product/snow-monkey/" target="_blank">' . __( 'subscription licenses', 'happy-snow-monkey-addons' ) . '</a>', __( 'Snow Monkey Support Forum', 'happy-snow-monkey-addons' ) );
 			?>
 		</p>
-		<h3><?php __( 'Please use it to create a topic in the forum. (Be sure to check that it does not contain any information that should not be posted.', 'happy-snow-monkey-addons' ); ?></h3>
+		<h3><?php echo __( 'Please use it to create a topic in the forum. (Be sure to check that it does not contain any information that should not be posted.', 'happy-snow-monkey-addons' ); ?></h3>
 		<table>
 			<tbody>
 				<?php
