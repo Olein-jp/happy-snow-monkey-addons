@@ -11,6 +11,16 @@
 if ( '1' === get_option( 'show-dashboard-widget' ) ) {
 
 	/**
+	 * admin enqueue style
+	 */
+	add_action(
+		'admin_enqueue_scripts',
+		function() {
+			wp_enqueue_style( 'hsma-admin-styles', HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/admin-style.css' );
+		}
+	);
+
+	/**
 	 * Dashboard setup
 	 */
 	add_action(
@@ -42,13 +52,91 @@ if ( '1' === get_option( 'show-dashboard-widget' ) ) {
 	 * Widget view
 	 */
 	function hsma_dashboard_widget() {
+		$hsma_active_plugins = get_option( 'active_plugins', [] );
 		?>
-		<p>Snow Monkey で困ったら以下の順で対応方法を検討することをお勧めします。</p>
-		<ol>
-			<li><a href="https://snow-monkey.2inc.org/forums/" target="_blank">Snow Monkey サポートフォーラム</a>でトラブル内容を検索する</li>
-			<li>Snow Monkey <a href="https://snow-monkey.2inc.org/product/snow-monkey/" target="_blank">サブスクリプション契約</a>を行い、<a href="https://snow-monkey.2inc.org/forums/" target="_blank">Snow Monkey サポートフォーラム</a>で質問をする</li>
-			<li><a href="https://snow-monkey.2inc.org/snow-monkey-expert/" target="_blank">Snow Monkey エキスパートのOlein Design</a>に対応を依頼する</li>
-		</ol>
+		<p>
+			<?php
+			/* translators: %1$s: Snow Monkey Forum URL */
+			printf( esc_html__( 'Let\'s search your troubles in %1$s', 'happy-snow-monkey-addons' ), '<a href="https://snow-monkey.2inc.org/forums/" target="_blank">' . __( 'Snow Monkey Support Forum', 'happy-snow-monkey-addons' ) . '</a>' );
+			?>
+			<br>
+			<?php
+			/* translators: %1$s: Snow Monkey subscription licenses url %2$s: Snow Monkey Forum URL */
+			printf( esc_html__( 'Or, I recommend to buy %1$s for making topics on %2$s', 'happy-snow-monkey-addons' ), '<a href="https://snow-monkey.2inc.org/product/snow-monkey/" target="_blank">' . __( 'subscription licenses', 'happy-snow-monkey-addons' ) . '</a>', __( 'Snow Monkey Support Forum', 'happy-snow-monkey-addons' ) );
+			?>
+		</p>
+		<h3><?php __( 'Please use it to create a topic in the forum. (Be sure to check that it does not contain any information that should not be posted.', 'happy-snow-monkey-addons' ); ?></h3>
+		<table>
+			<tbody>
+				<?php
+				include_once( ABSPATH . 'wp-admin/includes/theme-install.php' );
+				$hsma_active_theme  = wp_get_theme();
+				$hsma_theme_version = $hsma_active_theme->version;
+				?>
+				<tr>
+					<td data-export-label="Name"><?php echo __( 'Snow Monkey version', 'happy-snow-monkey-addons' ); ?></td>
+					<td><?php echo esc_html( $hsma_theme_version ); ?></td>
+				</tr>
+				<?php
+				foreach ( $hsma_active_plugins as $hsma_active_plugin ) {
+					$hsma_plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $hsma_active_plugin );
+					if ( preg_match( '/Snow Monkey/', $hsma_plugin_data['Name'] ) ) {
+						$hsma_plugin_name = esc_html( $hsma_plugin_data['Name'] );
+						?>
+						<tr>
+							<td>
+								<?php
+								/* translators: %1$s: plugin name */
+								printf( esc_html__( '%1$s version', 'happy-snow-monkey-addons' ), $hsma_plugin_name );
+								?>
+							</td>
+							<td><?php echo esc_html( $hsma_plugin_data['Version'] ); ?></td>
+						</tr>
+						<?php
+					}
+				}
+				$hsma_browser = $_SERVER['HTTP_USER_AGENT'];
+				?>
+				<tr>
+					<td><?php echo __( 'Using browser', 'happy-snow-monkey-addons' ); ?></td>
+					<td><?php echo $hsma_browser; ?></td>
+				</tr>
+			<tr>
+				<td><?php echo __( 'URL of the site', 'happy-snow-monkey-addons' ); ?></td>
+				<td><?php echo esc_url( home_url() ); ?></td>
+			</tr>
+			</tbody>
+		</table>
+		<h3><?php echo __( 'We also recommend copying and pasting the following for reference information.', 'happy-snow-monkey-addons' ); ?></h3>
+		<table>
+			<tbody>
+			<?php
+			foreach ( $hsma_active_plugins as $hsma_active_plugin ) {
+				$hsma_plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $hsma_active_plugin );
+				if ( ! preg_match( '/Snow Monkey/', $hsma_plugin_data['Name'] ) ) {
+					$hsma_plugin_name = esc_html( $hsma_plugin_data['Name'] );
+					?>
+					<tr>
+						<td><?php echo $hsma_plugin_name; ?></td>
+						<td><?php echo esc_html( $hsma_plugin_data['Version'] ); ?></td>
+					</tr>
+					<?php
+				}
+			}
+			?>
+			</tbody>
+		</table>
+		<h3>
+			<?php
+			echo __( 'If you still have trouble...', 'happy-snow-monkey-addons' );
+			?>
+			</h3>
+		<p class="hsma-admin-cta">
+			<?php
+			/* translators: %1$s: Snow Monkey Expert URL */
+			printf( esc_html__( 'Talk to %1$s', 'happy-snow-monkey-addons' ), '<a href="https://snow-monkey.2inc.org/snow-monkey-expert/" target="_blank">' . __( 'Olein Design as a Snow Monkey Expert', 'happy-snow-monkey-addons' ) . '</a>' );
+			?>
+		</p>
 		<?php
 	}
 }

@@ -1,0 +1,36 @@
+#hsma_dasgboard_widget {
+  h2 {
+    color: #cd162c;
+  }
+  h3 {
+    padding: 5px;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    margin-bottom: 30px;
+    tr {
+      &:nth-child(2n+1) {
+        background-color: #f4f4f4;
+      }
+      td {
+        display: inline-block;
+        padding: 5px 15px;
+        &:first-child {
+          font-weight: bold;
+          width: 60%;
+        }
+      }
+    }
+  }
+  .hsma-admin-cta {
+    background-color: #cd162c;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
