@@ -61,13 +61,6 @@ function hsma_admin_init() {
 		'happy-snow-monkey-addons'
 	);
 
-	add_settings_section(
-		'happy-snow-monkey-addons-block-style',
-		__( 'Block styles', 'happy-snow-monkey-addons' ),
-		'hsma_block_style_section_desc',
-		'happy-snow-monkey-addons'
-	);
-
 	/**
 	 * section description / Show action hook points
 	 */
@@ -87,18 +80,14 @@ function hsma_admin_init() {
 	}
 
 	/**
-	 * section description / Extending styles
-	 */
-	function hsma_block_style_section_desc() {
-		?>
-		<p><?php esc_html_e( 'Please check the styles you want to use', 'happy-snow-monkey-addons' ); ?></p>
-		<?php
-	}
-
-	/**
 	 * Register settings : action hook points
 	 */
 	register_setting( 'happy-snow-monkey-addons', 'show-action-hook-points' );
+
+	/**
+	 * Register settings : dashboard widget
+	 */
+	register_setting( 'happy-snow-monkey-addons', 'show-dashboard-widget' );
 
 	/**
 	 * Setting fields
@@ -118,7 +107,6 @@ function hsma_admin_init() {
 	);
 
 	/**
-	 *
 	 * Show dashboard widget
 	 */
 	add_settings_field(
@@ -132,25 +120,5 @@ function hsma_admin_init() {
 		'happy-snow-monkey-addons',
 		'happy-snow-monkey-addons-show-dashboard-widget'
 	);
-
-	/*******
-	 * Register settings : Block styles
-	 */
-	$styles = include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/config/styles.php' );
-
-	foreach ( $styles as $style ) {
-		register_setting( 'happy-snow-monkey-addons', $style['style_name'] );
-		add_settings_field(
-			$style['style_name'],
-			esc_html( $style['style_label'] ),
-			function () use ( $style ) {
-				?>
-				<input type="checkbox" name="<?php echo esc_html( $style['style_name'] ); ?>" value="1" <?php checked( 1, get_option( $style['style_name'] ) ); ?>>
-				<?php
-			},
-			'happy-snow-monkey-addons',
-			'happy-snow-monkey-addons-block-style'
-		);
-	}
 
 }

@@ -83,13 +83,11 @@ add_action(
 $styles = include( HAPPY_SNOW_MONKEY_ADDONS_PATH . '/config/styles.php' );
 
 foreach ( $styles as $style ) {
-	if ( '1' === get_option( $style['style_name'] ) ) {
-		register_block_style(
-			$style['block_name'],
-			array(
-				'name'  => $style['style_name'],
-				'label' => esc_html( $style['style_label'] ),
-			)
-		);
-	}
+	register_block_style(
+		$style['block_name'],
+		array(
+			'name'  => $style['style_name'],
+			'label' => esc_html( $style['style_label'] ),
+		)
+	);
 }
