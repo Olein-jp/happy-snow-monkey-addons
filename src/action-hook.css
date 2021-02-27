@@ -1,0 +1,81 @@
+/*--------------------------------------------------------------
+    hsma-hook-point
+--------------------------------------------------------------*/
+.c-hsma-hook-point {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 12px;
+  background-color: #bf1529;
+  background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(0.25, #cd162c), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #cd162c), color-stop(0.75, #cd162c), color-stop(0.75, transparent), to(transparent));
+  -webkit-background-size: 14px 14px;
+  animation: blink 1s ease-in-out infinite alternate; }
+  @media screen and (min-width: 40em) {
+    .c-hsma-hook-point {
+      font-size: 16px; } }
+  .c-hsma-hook-point a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold; }
+
+/*--------------------------------------------------------------
+    animation
+--------------------------------------------------------------*/
+@keyframes blink {
+  0% {
+    opacity: .75; }
+  100% {
+    opacity: 1; } }
+/*--------------------------------------------------------------
+    Project
+--------------------------------------------------------------*/
+.p-hsm-prepend-footer,
+.p-hsm-append-footer {
+  border-radius: 0; }
+
+.p-snow_monkey_prepend_drawer_nav {
+  margin: 15px;
+  padding: 10px; }
+
+.p-snow_monkey_append_drawer_nav {
+  margin: 15px;
+  padding: 10px; }
+
+.p-snow_monkey_prepend_body {
+  border-radius: 0; }
+
+.p-snow_monkey_prepend_footer {
+  border-radius: 0; }
+
+.p-snow_monkey_append_footer {
+  border-radius: 0; }
+
+.p-snow_monkey_prepend_main {
+  margin-bottom: 15px; }
+
+.p-snow_monkey_append_main {
+  margin-top: 50px; }
+
+.p-snow_monkey_prepend_contents {
+  border-radius: 0;
+  margin-bottom: 15px; }
+
+.p-snow_monkey_append_contents {
+  border-radius: 0;
+  margin-bottom: 30px; }
+
+.p-snow_monkey_before_contents_inner {
+  margin-bottom: 15px; }
+  @media screen and (min-width: 40em) {
+    .p-snow_monkey_before_contents_inner {
+      margin-bottom: 0; } }
+
+.p-snow_monkey_after_contents_inner {
+  margin-bottom: 30px; }
+
+.p-snow_monkey_entry_meta_items {
+  display: inline-block;
+  color: white !important;
+  padding: 5px 10px;
+  border-radius: 5px; }
+
+/*# sourceMappingURL=action-hook.css.map */
