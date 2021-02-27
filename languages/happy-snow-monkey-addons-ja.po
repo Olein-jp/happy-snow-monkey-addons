@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: HAPPY SNOW MONKEY Add-ons 0.1.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/happy-snow-monkey-"
 "addons\n"
-"POT-Creation-Date: 2021-02-25T02:29:10+00:00\n"
-"PO-Revision-Date: 2021-02-25 12:08+0900\n"
+"POT-Creation-Date: 2021-02-27T00:51:31+00:00\n"
+"PO-Revision-Date: 2021-02-27 09:52+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -94,26 +94,18 @@ msgstr "アクションフック箇所を表示"
 msgid "Show dashboard widget"
 msgstr "ダッシュボードウィジェットを表示"
 
-#: inc/settings-panel.php:66
-msgid "Block styles"
-msgstr "ブロックスタイル"
-
-#: inc/settings-panel.php:76
+#: inc/settings-panel.php:69
 msgid "Please check if you want to show action hook points"
 msgstr "アクションフック箇所を表示したい場合にはチェックを入れてください"
 
-#: inc/settings-panel.php:85
+#: inc/settings-panel.php:78
 msgid ""
 "Please check if you want to show HAPPY SNOW MONKEY Addons dashboard widget"
 msgstr ""
 "HAPPY SNOW MONKEY アドオン ダッシュボードウィジェットを表示したい場合には"
 "チェックを入れてください"
 
-#: inc/settings-panel.php:94
-msgid "Please check the styles you want to use"
-msgstr "利用したいブロックスタイルにチェックを入れてください"
-
-#: inc/settings-panel.php:110 inc/settings-panel.php:126
+#: inc/settings-panel.php:99 inc/settings-panel.php:114
 msgid "Show"
 msgstr "表示"
 
@@ -127,29 +119,38 @@ msgid "[HAPPY SNOW MONKEY Add-ons] Needs the Snow Monkey %1$s or more"
 msgstr ""
 "[HAPPY SNOW MONKEY アドオン] Snow Monkey バージョン %1$s 以上が必要です"
 
+#: inc/show-action-hook-points.php:108
+msgid "Here is %1$s"
+msgstr "ここはアクションフック %1$s の場所です"
+
 #: inc/show-dashboard-widget.php:31
 msgid "If you have trouble with Snow Monkey..."
 msgstr "もし Snow Monkey を使っていて困ったら…"
 
-#: inc/show-dashboard-widget.php:59
+#. translators: %1$s: Snow Monkey Forum URL
+#: inc/show-dashboard-widget.php:60
 msgid "Let's search your troubles in %1$s"
 msgstr "%1$s でトラブルの内容を検索してみましょう"
 
-#: inc/show-dashboard-widget.php:59 inc/show-dashboard-widget.php:63
+#. translators: %1$s: Snow Monkey Forum URL
+#. translators: %1$s: Snow Monkey subscription licenses url %2$s: Snow Monkey Forum URL
+#: inc/show-dashboard-widget.php:60 inc/show-dashboard-widget.php:65
 msgid "Snow Monkey Support Forum"
 msgstr "Snow Monkey サポートフォーラム"
 
-#: inc/show-dashboard-widget.php:63
+#. translators: %1$s: Snow Monkey subscription licenses url %2$s: Snow Monkey Forum URL
+#: inc/show-dashboard-widget.php:65
 msgid "Or, I recommend to buy %1$s for making topics on %2$s"
 msgstr ""
 "もしくは、%2$s にトピック（質問）を投稿するために %1$s を購入されることをお勧"
 "めします"
 
-#: inc/show-dashboard-widget.php:63
+#. translators: %1$s: Snow Monkey subscription licenses url %2$s: Snow Monkey Forum URL
+#: inc/show-dashboard-widget.php:65
 msgid "subscription licenses"
 msgstr "サブスクリプション契約"
 
-#: inc/show-dashboard-widget.php:65
+#: inc/show-dashboard-widget.php:68
 msgid ""
 "Please use it to create a topic in the forum. (Be sure to check that it does "
 "not contain any information that should not be posted."
@@ -161,32 +162,41 @@ msgstr ""
 msgid "Snow Monkey version"
 msgstr "【お使いの Snow Monkey のバージョン】"
 
-#: inc/show-dashboard-widget.php:87
+#. translators: %1$s: plugin name
+#: inc/show-dashboard-widget.php:90
 msgid "%1$s version"
 msgstr "【お使いの %1$s のバージョン】"
 
-#: inc/show-dashboard-widget.php:97
+#: inc/show-dashboard-widget.php:101
 msgid "Using browser"
 msgstr "【お使いのブラウザ】"
 
-#: inc/show-dashboard-widget.php:101
+#: inc/show-dashboard-widget.php:105
 msgid "URL of the site"
 msgstr "【当該サイトのURL】"
 
-#: inc/show-dashboard-widget.php:106
+#: inc/show-dashboard-widget.php:110
 msgid ""
 "We also recommend copying and pasting the following for reference "
 "information."
 msgstr "参考情報として以下の情報もコピー＆ペーストすることをお勧めします。"
 
-#: inc/show-dashboard-widget.php:123
+#: inc/show-dashboard-widget.php:131
 msgid "If you still have trouble..."
 msgstr "それでも解決できない場合には…"
 
-#: inc/show-dashboard-widget.php:126
+#. translators: %1$s: Snow Monkey Expert URL
+#: inc/show-dashboard-widget.php:137
 msgid "Talk to %1$s"
 msgstr "%1$s にご相談ください"
 
-#: inc/show-dashboard-widget.php:126
+#. translators: %1$s: Snow Monkey Expert URL
+#: inc/show-dashboard-widget.php:137
 msgid "Olein Design as a Snow Monkey Expert"
 msgstr "Snow Monkey エキスパートの Olein Design"
+
+#~ msgid "Block styles"
+#~ msgstr "ブロックスタイル"
+
+#~ msgid "Please check the styles you want to use"
+#~ msgstr "利用したいブロックスタイルにチェックを入れてください"
