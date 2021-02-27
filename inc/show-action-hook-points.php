@@ -105,7 +105,12 @@ if ( '1' === get_option( 'show-action-hook-points' ) ) {
 			function () use ( $action_hook ) {
 				?>
 				<div class="c-btn c-btn--block c-hsma-hook-point p-<?php echo esc_html( $action_hook ); ?>">
-					<p><a href="<?php echo esc_url( HAPPY_SNOW_MONKEY_WEBSITE_URL . '/' . $action_hook ); ?>" target="_blank" title="<?php printf ( esc_html__( 'Here is %1$s', 'happy-snow-monkey-addons' ), $action_hook ); ?>"><?php echo esc_html( $action_hook ); ?></a></p>
+					<p>
+						<?php /* translators: %1$s: action hook name */ ?>
+						<a href="<?php echo esc_url( HAPPY_SNOW_MONKEY_WEBSITE_URL . '/' . $action_hook ); ?>" target="_blank" title="<?php printf( esc_html__( 'Here is %1$s', 'happy-snow-monkey-addons' ), $action_hook ); ?>">
+							<?php echo esc_html( $action_hook ); ?>
+						</a>
+					</p>
 				</div>
 				<?php
 			}
