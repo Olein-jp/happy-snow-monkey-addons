@@ -55,7 +55,11 @@ function hsma_admin_notice_invalid_snow_monkey_version() {
 /**
  * When 'show-action-hook-points is checked...
  */
-if ( '1' === get_option( 'show-action-hook-points' ) ) {
+if ( '1' === get_option( 'show-action-hook-points' ) && current_user_can( 'administrator' ) ) {
+	$this_site_url = $_SERVER['HTTP_HOST'];
+	if ( strstr( $this_site_url, 'happy-snow-monkey' ) === true ) {
+		return;
+	}
 
 	/**
 	 * import style sheet
