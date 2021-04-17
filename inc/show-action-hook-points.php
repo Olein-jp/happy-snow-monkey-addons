@@ -56,17 +56,16 @@ function hsma_admin_notice_invalid_snow_monkey_version() {
  * When 'show-action-hook-points is checked...
  */
 if ( '1' === get_option( 'show-action-hook-points' ) && current_user_can( 'administrator' ) ) {
-	$this_site_url = $_SERVER['HTTP_HOST'];
-	if ( strstr( $this_site_url, 'happy-snow-monkey' ) === true ) {
-		return;
-	}
-
 	/**
 	 * import style sheet
 	 */
 	add_action(
 		'wp_enqueue_scripts',
 		function () {
+			$this_site_url = $_SERVER['HTTP_HOST'];
+			if ( ! strstr( $this_site_url, 'happy-snow-monkey' ) ) {
+				return;
+			}
 			wp_enqueue_style(
 				'hsma-output-action-hook-styles',
 				HAPPY_SNOW_MONKEY_ADDONS_URL . '/build/action-hook.css',
@@ -111,7 +110,7 @@ if ( '1' === get_option( 'show-action-hook-points' ) && current_user_can( 'admin
 				<div class="c-btn c-btn--block c-hsma-hook-point p-<?php echo esc_html( $action_hook ); ?>">
 					<p>
 						<?php /* translators: %1$s: action hook name */ ?>
-						<a href="<?php echo esc_url( HAPPY_SNOW_MONKEY_WEBSITE_URL . '/' . $action_hook ); ?>" target="_blank" title="<?php printf( esc_html__( 'Here is %1$s', 'happy-snow-monkey-addons' ), $action_hook ); ?>">
+						<a href="<?php echo esc_url( HAPPY_SNOW_MONKEY_WEBSITE_URL . '/' . $action_hook ); ?>" target="_blank" title="<?php printf( esc_html__( 'Here is %1$s', 'happy-snow-monkey-addons' ), $action_hook ); ?>" style="color: white;">
 							<?php echo esc_html( $action_hook ); ?>
 						</a>
 					</p>
